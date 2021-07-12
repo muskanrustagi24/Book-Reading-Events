@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BookReadingEvents.Domain.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,9 +9,18 @@ namespace BookReadingEvents.Controllers
 {
     public class HomeController : Controller
     {
+        IUserData db;
+
+        public HomeController()
+        {
+            db = new DummyUserData();
+        }
+
         public ActionResult Index()
         {
-            return View();
+            var users = db.GetAll();
+
+            return View(users);
         }
 
         public ActionResult About()
