@@ -9,5 +9,7 @@ namespace BookReadingEvents.Domain.Services
    public interface IUserData
     {
         IEnumerable<User> GetAll();
+
+        bool LoginUser(User user);
     }
 }

@@ -24,5 +24,12 @@ namespace BookReadingEvents.Domain.Services
         {
             return users.OrderBy(r => r.Email);
         }
+
+        public bool LoginUser(User user)
+        {
+            var loginUser = users.FirstOrDefault(u => u.Email == user.Email && u.Password == user.Password);
+
+            return loginUser != null;
+        }
     }
 }
