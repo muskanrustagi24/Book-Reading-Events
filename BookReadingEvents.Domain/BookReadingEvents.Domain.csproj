@@ -49,6 +49,9 @@
     <Compile Include="Event.cs" />
     <Compile Include="Invitee.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\DummyUserData.cs" />
+    <Compile Include="Services\IEventData.cs" />
+    <Compile Include="Services\IUserData.cs" />
     <Compile Include="User.cs" />
   </ItemGroup>
   <ItemGroup>
