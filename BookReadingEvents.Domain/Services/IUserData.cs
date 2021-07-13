@@ -10,6 +10,8 @@ namespace BookReadingEvents.Domain.Services
     {
         IEnumerable<User> GetAll();
 
+        User GetUserById(Guid id);
+
         bool LoginUser(User user);
     }
 }
