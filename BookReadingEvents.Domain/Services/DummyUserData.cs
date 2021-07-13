@@ -25,6 +25,12 @@ namespace BookReadingEvents.Domain.Services
             return users.OrderBy(r => r.Email);
         }
 
+        public User GetUserById(Guid id)
+        {
+            var user = users.FirstOrDefault(u => u.UserId == id);
+            return user;
+        }
+
         public bool LoginUser(User user)
         {
             var loginUser = users.FirstOrDefault(u => u.Email == user.Email && u.Password == user.Password);
