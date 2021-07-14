@@ -1,8 +1,5 @@
 ﻿using BookReadingEvents.Domain.Services;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace BookReadingEvents.Controllers
@@ -23,17 +20,22 @@ namespace BookReadingEvents.Controllers
             return View(users);
         }
 
-        public ActionResult About()
+        public ActionResult MyEvents()
         {
             ViewBag.Message = "Your application description page.";
 
             return View();
         }
 
-        public ActionResult Contact()
+        public ActionResult EventsInvitedTo()
         {
             ViewBag.Message = "Your contact page.";
 
+            return View();
+        }
+
+        public ActionResult SignUp()
+        {
             return View();
         }
     }
