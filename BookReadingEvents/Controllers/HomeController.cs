@@ -6,11 +6,11 @@ namespace BookReadingEvents.Controllers
 {
     public class HomeController : Controller
     {
-        IUserData db;
+        private readonly IUserData db;
 
-        public HomeController()
+        public HomeController(IUserData db)
         {
-            db = new DummyUserData();
+            this.db = db;
         }
 
         public ActionResult Index()
