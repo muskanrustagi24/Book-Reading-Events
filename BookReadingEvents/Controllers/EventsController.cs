@@ -29,5 +29,11 @@ namespace BookReadingEvents.Controllers
             return View(model);
         }
 
+        public ActionResult Details(Guid id) {
+
+            var model = eventData.GetEventById(id);
+            return View(model);
+        }
+    
     }
 }
