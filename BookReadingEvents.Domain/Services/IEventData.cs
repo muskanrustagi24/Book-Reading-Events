@@ -13,5 +13,6 @@ namespace BookReadingEvents.Domain.Services
         Event GetEventById(Guid id);
 
         IEnumerable<Event> GetPublicEvents();
-    }
+
+   }
 }
