@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BookReadingEvents.Domain.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -13,5 +14,13 @@ namespace BookReadingEvents.Controllers
         {
             return View();
         }
+
+        public ActionResult SignUp() {
+
+            return View();
+            
+        }
+
+    
     }
 }
