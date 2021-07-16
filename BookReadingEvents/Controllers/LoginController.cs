@@ -1,26 +1,52 @@
-﻿using BookReadingEvents.Domain.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using BookReadingEvents.DataAccess.Services;
+using BookReadingEvents.Domain;
 using System.Web.Mvc;
 
 namespace BookReadingEvents.Controllers
 {
     public class LoginController : Controller
     {
-        // GET: Login
+        private readonly IUserData userData;
+
+       
+        public LoginController(IUserData userData) {
+            this.userData = userData;
+        }
+
+        [HttpGet]
         public ActionResult Index()
         {
             return View();
         }
 
-        public ActionResult SignUp() {
+        [HttpPost]
+        public ActionResult Index(User user) {
 
-            return View();
-            
+            bool doesUserExist = userData.DoesUserExist(user);
+
+            if (doesUserExist)
+            {
+                return RedirectToAction("Index", "Events", new { id = user.UserId });
+            }
+            else {
+                return View();
+            }
+  
         }
 
+
+        [HttpGet]
+        public ActionResult SignUp() {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult SignUp(User user) {
+           
+            userData.AddUser(user);         
+            return RedirectToAction("Index", "Events", new { id = user.UserId });
+            
+        }
     
     }
 }

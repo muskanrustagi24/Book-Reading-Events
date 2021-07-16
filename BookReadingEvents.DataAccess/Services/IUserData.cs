@@ -1,0 +1,18 @@
+﻿using BookReadingEvents.Domain;
+using System;
+using System.Collections.Generic;
+
+namespace BookReadingEvents.DataAccess.Services
+{
+    public interface IUserData
+    {
+        IEnumerable<User> GetAll();
+
+        User GetUserById(Guid id);
+
+        bool DoesUserExist(User user);
+
+        void AddUser(User user);
+    }
+
+}

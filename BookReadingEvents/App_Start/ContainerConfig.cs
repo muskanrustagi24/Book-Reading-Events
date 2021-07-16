@@ -1,10 +1,6 @@
 ﻿using Autofac;
 using Autofac.Integration.Mvc;
-using BookReadingEvents.Domain.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+using BookReadingEvents.DataAccess.Services;
 using System.Web.Mvc;
 
 namespace BookReadingEvents

@@ -1,8 +1,7 @@
-﻿using BookReadingEvents.Domain.Services;
+﻿using BookReadingEvents.DataAccess.Services;
+using BookReadingEvents.Domain;
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace BookReadingEvents.Controllers
@@ -10,22 +9,25 @@ namespace BookReadingEvents.Controllers
     public class EventsController : Controller
     {
         private readonly IEventData eventData;
+        private readonly IUserData userData;
+        private User user;
 
-        public EventsController(IEventData eventData) {
+        public EventsController(IEventData eventData , IUserData userData) {
             this.eventData = eventData;
+            this.userData = userData;
         }
 
-        // GET: Events
-        public ActionResult Index()
+        public ActionResult Index(Guid id)
         {
+            user = userData.GetUserById(id); 
             var model = eventData.GetPublicEvents();
             return View(model);
         }
+                      
 
-        public ActionResult MyEvents()
+        public ActionResult MyEvents(Guid id)
         { 
             var model = eventData.GetAll();
-
             return View(model);
         }
 
