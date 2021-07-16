@@ -39,7 +39,7 @@ namespace BookReadingEvents.DataAccess.Services
 
         public void AddUser(User user)
         {
-            users.Append(user);
+            this.users = users.Append(user);
         }
     }
 
