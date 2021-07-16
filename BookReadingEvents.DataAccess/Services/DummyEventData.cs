@@ -1,11 +1,10 @@
-﻿using System;
+﻿using BookReadingEvents.Domain;
+using BookReadingEvents.Domain.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using BookReadingEvents.Domain.Enums;
 
-namespace BookReadingEvents.Domain.Services
+namespace BookReadingEvents.DataAccess.Services
 {
     public class DummyEventData : IEventData
     {
@@ -20,6 +19,12 @@ namespace BookReadingEvents.Domain.Services
                 new Event{Title = "Event 3" , Date = new DateTime(2021 , 11 , 23) , Description = "abc" , Duration = 2 , Location = "Noida" , TypeOfEvent = EventType.Public }
             };
         }
+
+        public void AddEvent(Event event_)
+        {
+            events.Append(event_);
+        }
+
         public IEnumerable<Event> GetAll()
         {
             return events.OrderBy(e => e.Date);

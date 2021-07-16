@@ -1,13 +1,12 @@
-﻿using System;
+﻿using BookReadingEvents.Domain;
+using BookReadingEvents.Domain.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using BookReadingEvents.Domain.Enums;
 
-namespace BookReadingEvents.Domain.Services
+namespace BookReadingEvents.DataAccess.Services
 {
-   public class DummyUserData : IUserData
+    public class DummyUserData : IUserData
     {
         IEnumerable<User> users;
 
@@ -31,11 +30,17 @@ namespace BookReadingEvents.Domain.Services
             return user;
         }
 
-        public bool LoginUser(User user)
+        public bool DoesUserExist(User user)
         {
             var loginUser = users.FirstOrDefault(u => u.Email == user.Email && u.Password == user.Password);
 
             return loginUser != null;
         }
+
+        public void AddUser(User user)
+        {
+            users.Append(user);
+        }
     }
+
 }

@@ -7,6 +7,7 @@ namespace BookReadingEvents.Domain
     public class User
     {
         [Key]
+        [System.ComponentModel.DataAnnotations.Schema.DatabaseGenerated(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.Identity)]
         public Guid UserId { get; set; }
 
         [Required]
