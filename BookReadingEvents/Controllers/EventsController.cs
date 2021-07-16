@@ -25,7 +25,7 @@ namespace BookReadingEvents.Controllers
         }
                       
 
-        public ActionResult MyEvents(Guid id)
+        public ActionResult MyEvents()
         { 
             var model = eventData.GetAll();
             return View(model);

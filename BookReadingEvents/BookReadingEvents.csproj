@@ -219,6 +219,10 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BookReadingEvents.BusinessLogic\BookReadingEvents.BusinessLogic.csproj">
+      <Project>{324286E4-A8B9-49F2-9810-336BB569137F}</Project>
+      <Name>BookReadingEvents.BusinessLogic</Name>
+    </ProjectReference>
     <ProjectReference Include="..\BookReadingEvents.DataAccess\BookReadingEvents.DataAccess.csproj">
       <Project>{c1993a19-3ec6-4551-a53b-808de0530310}</Project>
       <Name>BookReadingEvents.DataAccess</Name>

@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookReadingEvents.Domain", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookReadingEvents.DataAccess", "..\BookReadingEvents.DataAccess\BookReadingEvents.DataAccess.csproj", "{C1993A19-3EC6-4551-A53B-808DE0530310}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookReadingEvents.BusinessLogic", "..\BookReadingEvents.BusinessLogic\BookReadingEvents.BusinessLogic.csproj", "{324286E4-A8B9-49F2-9810-336BB569137F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{C1993A19-3EC6-4551-A53B-808DE0530310}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C1993A19-3EC6-4551-A53B-808DE0530310}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C1993A19-3EC6-4551-A53B-808DE0530310}.Release|Any CPU.Build.0 = Release|Any CPU
+		{324286E4-A8B9-49F2-9810-336BB569137F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{324286E4-A8B9-49F2-9810-336BB569137F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{324286E4-A8B9-49F2-9810-336BB569137F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{324286E4-A8B9-49F2-9810-336BB569137F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

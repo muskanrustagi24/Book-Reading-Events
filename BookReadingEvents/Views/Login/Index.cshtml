@@ -24,26 +24,20 @@
             <form action="/login" method="POST">
                 <div class="form-group">
                     @Html.LabelFor(model => model.Email)
-                   @* <label for="username">Username</label>*@
                     @Html.EditorFor(model => model.Email)
-                   @* <input type="text" class="form-control" name="username" id="username" placeholder="Enter Username">*@
-                    <small class="form-text text-muted">We'll never share your username with anyone else.</small>
+                <small class="form-text text-muted">We'll never share your username with anyone else.</small>
                 </div>
                 <div class="form-group">
                     @Html.LabelFor(model => model.Password)
-                  @*  <label for="password">Password</label>*@
                     @Html.PasswordFor(model => model.Password)
-                  @*  <input type="password" class="form-control" name="password" id="password" placeholder="Enter Password">*@
                 </div>
-
-                @* Login *@
-                @*<div>@Html.ActionLink("Login" , "Index" , "Events")</div>*@
+         
                 <button type="submit" class="btn btn-primary">Submit</button>
                 <div class="line"></div>
                 <br />
-                @* Sign up *@
+              
                 <div>@Html.ActionLink("Sign Up" , "SignUp", "Login")</div>
-               @* <div class="ww">Not a member ? <a style="text-decoration:none;"href="https://localhost:44307/Home/SignUp">Sign Up</a></div>*@
+             
             </form>
         </div>
         <div class="col"></div>

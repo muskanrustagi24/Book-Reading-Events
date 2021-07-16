@@ -1,4 +1,5 @@
-﻿using BookReadingEvents.DataAccess.Services;
+﻿using BookReadingEvents.BusinessLogic;
+using BookReadingEvents.DataAccess.Services;
 using BookReadingEvents.Domain;
 using System.Web.Mvc;
 
@@ -7,10 +8,12 @@ namespace BookReadingEvents.Controllers
     public class LoginController : Controller
     {
         private readonly IUserData userData;
-
+        private UserBusinessLogic businessLogic;
        
         public LoginController(IUserData userData) {
+            
             this.userData = userData;
+          
         }
 
         [HttpGet]
@@ -43,9 +46,19 @@ namespace BookReadingEvents.Controllers
         [HttpPost]
         public ActionResult SignUp(User user) {
            
-            userData.AddUser(user);         
-            return RedirectToAction("Index", "Events", new { id = user.UserId });
-            
+            userData.AddUser(user);
+
+            bool doesUserExist = userData.DoesUserExist(user);
+
+            if (doesUserExist)
+            {
+                return RedirectToAction("Index", "Events", new { id = user.UserId });
+            }
+            else
+            {
+                return View();
+            }
+
         }
     
     }
