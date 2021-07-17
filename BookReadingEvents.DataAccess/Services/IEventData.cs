@@ -8,13 +8,15 @@ namespace BookReadingEvents.DataAccess.Services
     {
         IEnumerable<Event> GetAll();
 
-        Event GetEventById(Guid id);
+        IEnumerable<Event> GetEventById(Guid id);
 
         IEnumerable<Event> GetPublicEvents();
     
         void AddEvent(Event event_);
 
         IEnumerable<Event> GetEventsCreatedByUser(Guid userId);
-    
+
+        void UpdateEvent(Event event_);
+
     }
 }

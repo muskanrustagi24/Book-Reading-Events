@@ -41,5 +41,17 @@ namespace BookReadingEvents.Controllers
             return View(model);
         }
 
+        [HttpGet]
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        public ActionResult Create(Event event_)
+        {
+            eventData.AddEvent(event_);
+            return View();
+        }
+
     }
 }

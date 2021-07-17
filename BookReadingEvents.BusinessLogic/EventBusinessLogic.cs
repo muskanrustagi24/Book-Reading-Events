@@ -26,6 +26,26 @@ namespace BookReadingEvents.BusinessLogic
             return events;
         }
 
-    
+        
+        public void AddEvent(Event event_)
+        {
+            this.eventData.AddEvent(event_);
+        }
+
+        public IEnumerable<Event> GetAll()
+        {
+            return this.eventData.GetAll();
+        }
+
+        public IEnumerable<Event> GetEventById(Guid id)
+        {
+            return this.eventData.GetEventById(id);
+        }
+
+        public void UpdateEvent(Event event_)
+        {
+            this.eventData.UpdateEvent(event_);
+        }
+
     }
 }
