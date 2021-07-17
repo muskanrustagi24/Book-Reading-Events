@@ -36,6 +36,15 @@ namespace BookReadingEvents.DataAccess.Services
             return evnt;
         }
 
+        public IEnumerable<Event> GetEventsCreatedByUser(Guid userId)
+        {
+            var eventsByUser = from e in events
+                               where e.UserId == userId
+                               select e;
+
+            return eventsByUser;
+        }
+
         public IEnumerable<Event> GetPublicEvents()
         {
             var publicEvents = from e in events

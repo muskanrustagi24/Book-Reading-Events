@@ -14,6 +14,8 @@ namespace BookReadingEvents.DataAccess.Services
     
         void AddEvent(Event event_);
 
+        IEnumerable<Event> GetEventsCreatedByUser(Guid userId);
+
         void UpdateEvent(Event event_);
 
     }
