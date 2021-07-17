@@ -1,4 +1,5 @@
 ﻿using BookReadingEvents.BusinessLogic;
+using BookReadingEvents.DataAccess.Services;
 using BookReadingEvents.Domain;
 using System.Web.Mvc;
 
@@ -6,27 +7,27 @@ namespace BookReadingEvents.Controllers
 {
     public class LoginController : Controller
     {
-        
-        private readonly UserBusinessLogic userBusinessLogic;
-        private readonly EventBusinessLogic eventBusinessLogic;
+        private readonly IUserData userData;
+        private UserBusinessLogic businessLogic;
        
-        public LoginController() {
-           userBusinessLogic = new UserBusinessLogic();
-            eventBusinessLogic = new EventBusinessLogic();
+        public LoginController(IUserData userData) {
+            
+            this.userData = userData;
+          
         }
 
         [HttpGet]
         public ActionResult Index()
-        {   
-           return View();
+        {
+            return View();
         }
 
         [HttpPost]
         public ActionResult Index(User user) {
 
-            User existingUser = userBusinessLogic.GetUserByEmail(user.Email);
-                  
-            if (existingUser != default)
+            bool doesUserExist = userData.DoesUserExist(user);
+
+            if (doesUserExist)
             {
                 return RedirectToAction("Index", "Events", new { id = user.UserId });
             }
@@ -44,10 +45,10 @@ namespace BookReadingEvents.Controllers
 
         [HttpPost]
         public ActionResult SignUp(User user) {
-
-            userBusinessLogic.SignUpUser(user);
            
-            bool doesUserExist = userBusinessLogic.IsUserValid(user);
+            userData.AddUser(user);
+
+            bool doesUserExist = userData.DoesUserExist(user);
 
             if (doesUserExist)
             {
@@ -59,13 +60,6 @@ namespace BookReadingEvents.Controllers
             }
 
         }
-
-        [HttpGet]
-        public ActionResult AllEventsBeforeLogin() {
-            var model = eventBusinessLogic.GetAllPublicEvents();
-            return View(model);
-        }
-    
     
     }
 }

@@ -14,8 +14,8 @@ namespace BookReadingEvents.DataAccess.Services
         {
             users = new List<User>()
             {
-                new User{Email = "abc@gmail.com"  , Password = "12344" , Role = UserType.Normal , UserId = Guid.Parse("00000000-0000-0000-0000-000000000000")},
-                new User{Email = "admin@gmail.com" , Password = "122343" , Role = UserType.Admin ,UserId = Guid.Parse("10000000-0000-0000-0000-000000000000")}
+                new User{Email = "abc@gmail.com"  , Password = "12344" , Role = UserType.Normal},
+                new User{Email = "admin@gmail.com" , Password = "122343" , Role = UserType.Admin }
             };
         }
 
@@ -40,12 +40,6 @@ namespace BookReadingEvents.DataAccess.Services
         public void AddUser(User user)
         {
             this.users = users.Append(user);
-        }
-
-        public User GetUserByEmail(string email)
-        {
-            User user = users.FirstOrDefault(u => u.Email.Equals(email));
-            return user;
         }
     }
 

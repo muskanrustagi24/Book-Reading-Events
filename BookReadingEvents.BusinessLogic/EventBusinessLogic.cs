@@ -8,11 +8,12 @@ using System.Threading.Tasks;
 
 namespace BookReadingEvents.BusinessLogic
 {
-    public class EventBusinessLogic
+    class EventBusinessLogic
     {
         private readonly IEventData eventData;
 
-        public EventBusinessLogic() {
+        public EventBusinessLogic()
+        {
             eventData = new DummyEventData();
         }
 
@@ -25,6 +26,13 @@ namespace BookReadingEvents.BusinessLogic
             var events = eventData.GetEventsCreatedByUser(userId);
             return events;
         }
+
+        
+        
+        
+        
+        
+        
         
         public void AddEvent(Event event_)
         {
@@ -39,6 +47,11 @@ namespace BookReadingEvents.BusinessLogic
         public IEnumerable<Event> GetEventById(Guid id)
         {
             return this.eventData.GetEventById(id);
+        }
+
+        public IEnumerable<Event> GetPublicEvents()
+        {
+            return this.eventData.GetPublicEvents();
         }
 
         public void UpdateEvent(Event event_)

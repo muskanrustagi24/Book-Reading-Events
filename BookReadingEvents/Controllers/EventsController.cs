@@ -1,5 +1,4 @@
-﻿using BookReadingEvents.BusinessLogic;
-using BookReadingEvents.DataAccess.Services;
+﻿using BookReadingEvents.DataAccess.Services;
 using BookReadingEvents.Domain;
 using System;
 using System.Web.Mvc;
@@ -8,36 +7,26 @@ namespace BookReadingEvents.Controllers
 {
     public class EventsController : Controller
     {
-        
-        private readonly UserBusinessLogic userBusinessLogic;
-        private readonly EventBusinessLogic eventBusinessLogic;
+        private readonly IEventData eventData;
+        private readonly IUserData userData;
         private User user;
 
-        public EventsController() {
-           
-            userBusinessLogic = new UserBusinessLogic();
-            eventBusinessLogic = new EventBusinessLogic();
-        }
-
-        [HttpGet]
-        public ActionResult Index() {
-            var model = eventBusinessLogic.GetAllPublicEvents();
-            return View(model);
+        public EventsController(IEventData eventData , IUserData userData) {
+            this.eventData = eventData;
+            this.userData = userData;
         }
 
         public ActionResult Index(Guid id)
         {
-            user = userBusinessLogic.GetUserByUserId(id);
-            System.Diagnostics.Debug.WriteLine(user);
-            var model = eventBusinessLogic.GetAllPublicEvents();
+            user = userData.GetUserById(id); 
+            var model = eventData.GetPublicEvents();
             return View(model);
         }
                       
 
         public ActionResult MyEvents()
-        {
-            var model = eventBusinessLogic.GetAllEventsCreatedByUser(user.UserId);
-            System.Diagnostics.Debug.WriteLine(user);
+        { 
+            var model = eventData.GetAll();
             return View(model);
         }
 
