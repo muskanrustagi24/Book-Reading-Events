@@ -38,7 +38,7 @@ namespace BookReadingEvents.Controllers
 
         public ActionResult Create(Event event_)
         {
-            eventData.AddEvent(event_);
+            eventBusinessLogic.AddEvent(event_);
             return View();
         }
 

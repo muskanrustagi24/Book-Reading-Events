@@ -8,7 +8,7 @@ namespace BookReadingEvents.DataAccess.Services
 {
     public class DummyEventData : IEventData
     {
-        IEnumerable<Event> events;
+        readonly IEnumerable<Event> events;
 
         public DummyEventData()
         {
@@ -43,6 +43,16 @@ namespace BookReadingEvents.DataAccess.Services
                                select e;
 
             return publicEvents;
+        }
+
+        public void UpdateEvent(Event event_)
+        {
+            throw new NotImplementedException();
+        }
+
+        IEnumerable<Event> IEventData.GetEventById(Guid id)
+        {
+            throw new NotImplementedException();
         }
     }
 }

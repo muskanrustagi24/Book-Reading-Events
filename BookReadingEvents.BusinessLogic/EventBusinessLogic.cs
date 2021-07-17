@@ -2,6 +2,9 @@
 using BookReadingEvents.Domain;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace BookReadingEvents.BusinessLogic
 {
@@ -9,11 +12,28 @@ namespace BookReadingEvents.BusinessLogic
     {
         private readonly IEventData eventData;
 
-        public EventBusinessLogic(IEventData eventData)
+        public EventBusinessLogic()
         {
-            this.eventData = eventData;
+            eventData = new DummyEventData();
         }
 
+        public IEnumerable<Event> GetAllPublicEvents() {
+            var events = eventData.GetPublicEvents();
+            return events;
+        }
+
+        public IEnumerable<Event> GetAllEventsCreatedByUser(Guid userId) {
+            var events = eventData.GetEventsCreatedByUser(userId);
+            return events;
+        }
+
+        
+        
+        
+        
+        
+        
+        
         public void AddEvent(Event event_)
         {
             this.eventData.AddEvent(event_);
