@@ -1,5 +1,6 @@
 ﻿using Autofac;
 using Autofac.Integration.Mvc;
+using BookReadingEvents.DataAccess;
 using BookReadingEvents.DataAccess.Services;
 using System.Web.Mvc;
 
@@ -14,7 +15,8 @@ namespace BookReadingEvents
             builder.RegisterControllers(typeof(MvcApplication).Assembly);
             
             builder.RegisterType<DummyUserData>().As<IUserData>().InstancePerRequest();
-            builder.RegisterType<DummyEventData>().As<IEventData>().InstancePerRequest();
+            builder.RegisterType<SqlEventData>().As<IEventData>().InstancePerRequest();
+            builder.RegisterType<BookReadingEventsContext>().InstancePerRequest();
 
             var container = builder.Build();
 
