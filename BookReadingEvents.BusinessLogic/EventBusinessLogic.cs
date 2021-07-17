@@ -25,7 +25,6 @@ namespace BookReadingEvents.BusinessLogic
             var events = eventData.GetEventsCreatedByUser(userId);
             return events;
         }
-
         
         public void AddEvent(Event event_)
         {
@@ -46,6 +45,5 @@ namespace BookReadingEvents.BusinessLogic
         {
             this.eventData.UpdateEvent(event_);
         }
-
     }
 }
