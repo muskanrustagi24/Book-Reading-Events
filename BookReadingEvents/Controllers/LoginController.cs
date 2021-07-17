@@ -1,5 +1,4 @@
 ﻿using BookReadingEvents.BusinessLogic;
-using BookReadingEvents.DataAccess.Services;
 using BookReadingEvents.Domain;
 using System.Web.Mvc;
 
@@ -7,27 +6,27 @@ namespace BookReadingEvents.Controllers
 {
     public class LoginController : Controller
     {
-        private readonly IUserData userData;
-        private UserBusinessLogic businessLogic;
+        
+        private readonly UserBusinessLogic userBusinessLogic;
+        private readonly EventBusinessLogic eventBusinessLogic;
        
-        public LoginController(IUserData userData) {
-            
-            this.userData = userData;
-          
+        public LoginController() {
+           userBusinessLogic = new UserBusinessLogic();
+            eventBusinessLogic = new EventBusinessLogic();
         }
 
         [HttpGet]
         public ActionResult Index()
-        {
-            return View();
+        {   
+           return View();
         }
 
         [HttpPost]
         public ActionResult Index(User user) {
 
-            bool doesUserExist = userData.DoesUserExist(user);
-
-            if (doesUserExist)
+            User existingUser = userBusinessLogic.GetUserByEmail(user.Email);
+                  
+            if (existingUser != default)
             {
                 return RedirectToAction("Index", "Events", new { id = user.UserId });
             }
@@ -45,10 +44,10 @@ namespace BookReadingEvents.Controllers
 
         [HttpPost]
         public ActionResult SignUp(User user) {
-           
-            userData.AddUser(user);
 
-            bool doesUserExist = userData.DoesUserExist(user);
+            userBusinessLogic.SignUpUser(user);
+           
+            bool doesUserExist = userBusinessLogic.IsUserValid(user);
 
             if (doesUserExist)
             {
@@ -60,6 +59,13 @@ namespace BookReadingEvents.Controllers
             }
 
         }
+
+        [HttpGet]
+        public ActionResult AllEventsBeforeLogin() {
+            var model = eventBusinessLogic.GetAllPublicEvents();
+            return View(model);
+        }
+    
     
     }
 }
