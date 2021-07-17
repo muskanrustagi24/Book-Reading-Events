@@ -1,6 +1,5 @@
 ﻿using BookReadingEvents.DataAccess.Services;
 using BookReadingEvents.Domain;
-
 using System;
 using System.Web.Mvc;
 
@@ -29,6 +28,18 @@ namespace BookReadingEvents.Controllers
         { 
             var model = eventData.GetAll();
             return View(model);
+        }
+
+        [HttpGet]
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        public ActionResult Create(Event event_)
+        {
+            eventData.AddEvent(event_);
+            return View();
         }
 
     }

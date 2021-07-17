@@ -66,6 +66,7 @@
     <Compile Include="Services\DummyUserData.cs" />
     <Compile Include="Services\IEventData.cs" />
     <Compile Include="Services\IUserData.cs" />
+    <Compile Include="Services\SqlEventData.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
