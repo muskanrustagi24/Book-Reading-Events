@@ -199,8 +199,6 @@
     <Content Include="Views\Events\MyEvents.cshtml" />
     <Content Include="Views\Login\SignUp.cshtml" />
     <Content Include="Views\Events\Index.cshtml" />
-    <Content Include="Views\Shared\_LayoutLoginSignup.cshtml" />
-    <Content Include="Views\Login\AllEventsBeforeLogin.cshtml" />
     <Content Include="Views\Events\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>

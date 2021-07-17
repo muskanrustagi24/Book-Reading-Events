@@ -50,10 +50,6 @@
       <Project>{C1993A19-3EC6-4551-A53B-808DE0530310}</Project>
       <Name>BookReadingEvents.DataAccess</Name>
     </ProjectReference>
-    <ProjectReference Include="..\BookReadingEvents.Domain\BookReadingEvents.Domain.csproj">
-      <Project>{8FE10AEB-C887-445A-BA89-D50DB284E730}</Project>
-      <Name>BookReadingEvents.Domain</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
