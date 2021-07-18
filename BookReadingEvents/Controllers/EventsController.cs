@@ -18,9 +18,9 @@ namespace BookReadingEvents.Controllers
             eventData = new EventBusinessLogic();
         }
 
-        public ActionResult Index(Guid id)
+        public ActionResult Index()
         {
-            user = userData.GetUserById(id); 
+             
             var model = eventData.GetPublicEvents();
             return View(model);
         }

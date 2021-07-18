@@ -32,5 +32,12 @@ namespace BookReadingEvents.BusinessLogic
         {
             userData.AddUser(user);
         }
+
+        public User GetUserByEmail(string email)
+        {
+            return userData.GetAll().FirstOrDefault(u => u.Email.Equals(email));
+        }
+
+     
     }
 }
