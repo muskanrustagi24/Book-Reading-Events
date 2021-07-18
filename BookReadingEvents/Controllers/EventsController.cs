@@ -11,7 +11,7 @@ namespace BookReadingEvents.Controllers
         
         private readonly EventBusinessLogic eventData;
         private readonly UserBusinessLogic userData;
-        private User user;
+        
 
         public EventsController() {
             userData = new UserBusinessLogic();
@@ -27,8 +27,10 @@ namespace BookReadingEvents.Controllers
                       
 
         public ActionResult MyEvents()
-        { 
-            var model = eventData.GetAll();
+        {
+            string userEmail = Session["Email"].ToString();
+            User user = userData.GetUserByEmail(userEmail);
+            var model = eventData.GetAllEventsCreatedByUser(user.UserId);
             return View(model);
         }
 

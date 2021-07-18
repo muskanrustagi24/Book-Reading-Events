@@ -35,8 +35,14 @@ namespace BookReadingEvents.BusinessLogic
 
         public IEnumerable<Event> GetEventById(Guid id)
         {
-            return this.eventData.GetEventById(id);
+            return this.eventData.GetEventsByUser(id);
         }
+
+        public Event GetEventByEventId(Guid id) {
+
+            return eventData.GetEventByEventId(id);
+        }
+
 
         public IEnumerable<Event> GetPublicEvents()
         {

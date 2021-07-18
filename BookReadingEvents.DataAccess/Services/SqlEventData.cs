@@ -27,7 +27,12 @@ namespace BookReadingEvents.DataAccess.Services
             return eventData.Events.OrderBy(e => e.EventId);
         }
 
-        public IEnumerable<Event> GetEventById(Guid id)
+        public Event GetEventByEventId(Guid id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<Event> GetEventsByUser(Guid id)
         {
             return from e in eventData.Events
                    where e.UserId == id
