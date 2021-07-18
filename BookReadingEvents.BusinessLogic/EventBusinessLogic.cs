@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BookReadingEvents.BusinessLogic
 {
-    class EventBusinessLogic
+    public class EventBusinessLogic
     {
         private readonly IEventData eventData;
 
@@ -23,17 +23,9 @@ namespace BookReadingEvents.BusinessLogic
         }
 
         public IEnumerable<Event> GetAllEventsCreatedByUser(Guid userId) {
-            var events = eventData.GetEventsCreatedByUser(userId);
-            return events;
+            return null;
         }
 
-        
-        
-        
-        
-        
-        
-        
         public void AddEvent(Event event_)
         {
             this.eventData.AddEvent(event_);

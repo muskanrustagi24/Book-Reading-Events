@@ -200,6 +200,8 @@
     <Content Include="Views\Login\SignUp.cshtml" />
     <Content Include="Views\Events\Index.cshtml" />
     <Content Include="Views\Events\Create.cshtml" />
+    <Content Include="Views\Shared\_LayoutLoginSignup.cshtml" />
+    <Content Include="Views\Login\AllEventsBeforeLoginSignup.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

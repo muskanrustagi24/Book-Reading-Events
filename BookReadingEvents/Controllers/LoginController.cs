@@ -7,12 +7,14 @@ namespace BookReadingEvents.Controllers
 {
     public class LoginController : Controller
     {
-        private readonly IUserData userData;
-        private UserBusinessLogic businessLogic;
+      
+        private UserBusinessLogic userData;
+        private EventBusinessLogic eventData;
        
-        public LoginController(IUserData userData) {
-            
-            this.userData = userData;
+        public LoginController() {
+
+            userData = new UserBusinessLogic();
+            eventData = new EventBusinessLogic();
           
         }
 
@@ -60,6 +62,12 @@ namespace BookReadingEvents.Controllers
             }
 
         }
-    
+
+        [HttpGet]
+        public ActionResult AllEventsBeforeLoginSignup()
+        {
+            var model = eventData.GetAllPublicEvents();
+            return View(model);
+        }
     }
 }

@@ -1,4 +1,5 @@
-﻿using BookReadingEvents.DataAccess.Services;
+﻿using BookReadingEvents.BusinessLogic;
+using BookReadingEvents.DataAccess.Services;
 using BookReadingEvents.Domain;
 using System;
 using System.Web.Mvc;
@@ -7,13 +8,14 @@ namespace BookReadingEvents.Controllers
 {
     public class EventsController : Controller
     {
-        private readonly IEventData eventData;
-        private readonly IUserData userData;
+        
+        private readonly EventBusinessLogic eventData;
+        private readonly UserBusinessLogic userData;
         private User user;
 
-        public EventsController(IEventData eventData , IUserData userData) {
-            this.eventData = eventData;
-            this.userData = userData;
+        public EventsController() {
+            userData = new UserBusinessLogic();
+            eventData = new EventBusinessLogic();
         }
 
         public ActionResult Index(Guid id)
@@ -38,7 +40,7 @@ namespace BookReadingEvents.Controllers
 
         public ActionResult Create(Event event_)
         {
-            eventBusinessLogic.AddEvent(event_);
+            
             return View();
         }
 
