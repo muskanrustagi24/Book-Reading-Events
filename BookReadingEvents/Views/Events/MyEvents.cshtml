@@ -2,10 +2,12 @@
 
 @{
     ViewBag.Title = "MyEvents";
+    
 }
 
 <h2>MyEvents</h2>
-
+@if (Model != null)
+{
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
@@ -35,7 +37,8 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
+@foreach (var item in Model)
+{
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.Title)
@@ -59,11 +62,16 @@
             @Html.DisplayFor(modelItem => item.Description)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.EventId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.EventId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.EventId })
+            @Html.ActionLink("Edit", "Edit", new { id = item.EventId }) |
+            @Html.ActionLink("Details", "Details", new { id = item.EventId }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.EventId })
         </td>
     </tr>
 }
 
 </table>
+}
+@if (Model == null) { 
+
+    <h1>Looks like there are no events!</h1>
+}
