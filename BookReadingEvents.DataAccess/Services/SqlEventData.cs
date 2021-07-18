@@ -11,9 +11,9 @@ namespace BookReadingEvents.DataAccess.Services
     {
         private readonly BookReadingEventsContext eventData;
 
-        public SqlEventData(BookReadingEventsContext eventData)
+        public SqlEventData()
         {
-            this.eventData = eventData;
+            this.eventData = new BookReadingEventsContext();
         }
 
         public void AddEvent(Event event_)
@@ -29,7 +29,7 @@ namespace BookReadingEvents.DataAccess.Services
 
         public Event GetEventByEventId(Guid id)
         {
-            throw new NotImplementedException();
+            return eventData.Events.FirstOrDefault(e => e.EventId == id);
         }
 
         public IEnumerable<Event> GetEventsByUser(Guid id)

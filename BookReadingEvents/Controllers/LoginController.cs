@@ -10,8 +10,8 @@ namespace BookReadingEvents.Controllers
     public class LoginController : Controller
     {
       
-        private UserBusinessLogic userData;
-        private EventBusinessLogic eventData;
+        private readonly UserBusinessLogic userData;
+        private readonly EventBusinessLogic eventData;
        
         public LoginController() {
 
@@ -30,7 +30,6 @@ namespace BookReadingEvents.Controllers
         public ActionResult Index(LoginViewModel viewModel) {
 
             User user = userData.GetUserByEmail(viewModel.Email);
-
 
             bool doesUserExist = userData.DoesUserExist(user);
 
@@ -53,8 +52,7 @@ namespace BookReadingEvents.Controllers
 
         [HttpPost]
         public ActionResult SignUp(User viewModel) {
-           
-                    
+                              
 
             userData.AddUser(viewModel);
 
