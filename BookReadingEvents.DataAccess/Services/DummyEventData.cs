@@ -30,10 +30,21 @@ namespace BookReadingEvents.DataAccess.Services
             return events.OrderBy(e => e.Date);
         }
 
-        public Event GetEventById(Guid id)
+        public Event GetEventByEventId(Guid id)
         {
             var evnt = events.FirstOrDefault(e => e.EventId == id);
             return evnt;
+        }
+        
+
+        public IEnumerable<Event> GetEventsByUser(Guid id)
+        {
+            var evnt = from e in events
+                       where e.UserId == id
+                       select e;
+            
+            return evnt;
+            
         }
 
         public IEnumerable<Event> GetPublicEvents()
@@ -46,11 +57,6 @@ namespace BookReadingEvents.DataAccess.Services
         }
 
         public void UpdateEvent(Event event_)
-        {
-            throw new NotImplementedException();
-        }
-
-        IEnumerable<Event> IEventData.GetEventById(Guid id)
         {
             throw new NotImplementedException();
         }
