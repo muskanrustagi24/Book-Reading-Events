@@ -2,6 +2,7 @@
 using BookReadingEvents.DataAccess.Services;
 using BookReadingEvents.Domain;
 using BookReadingEvents.ViewModels;
+using System;
 using System.Web.Mvc;
 
 namespace BookReadingEvents.Controllers
@@ -78,5 +79,13 @@ namespace BookReadingEvents.Controllers
             var model = eventData.GetAllPublicEvents();
             return View(model);
         }
+
+        [HttpGet]
+        public ActionResult Details(Guid id) {
+
+            Event myEvent = eventData.GetEventByEventId(id);
+            return View(myEvent);
+        }
+    
     }
 }

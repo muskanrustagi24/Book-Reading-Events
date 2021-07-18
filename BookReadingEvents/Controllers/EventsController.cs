@@ -11,7 +11,7 @@ namespace BookReadingEvents.Controllers
         
         private readonly EventBusinessLogic eventData;
         private readonly UserBusinessLogic userData;
-        private User user;
+        
 
         public EventsController() {
             userData = new UserBusinessLogic();
