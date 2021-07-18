@@ -13,6 +13,7 @@ namespace BookReadingEvents.DataAccess.Services
         bool DoesUserExist(User user);
 
         void AddUser(User user);
-    }
 
+        void UpdateUser(User user);
+    }
 }

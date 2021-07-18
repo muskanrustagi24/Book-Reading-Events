@@ -11,19 +11,20 @@
                 <div class="form-group">
                     @Html.LabelFor(model => model.Email)
                     @Html.EditorFor(model => model.Email)
-                <small class="form-text text-muted">We'll never share your username with anyone else.</small>
+                    <br />
+                    <small class="form-text text-muted">We'll never share your username with anyone else.</small>
                 </div>
                 <div class="form-group">
                     @Html.LabelFor(model => model.Password)
                     @Html.PasswordFor(model => model.Password)
                 </div>
-         
+
                 <button type="submit" class="btn btn-primary">Submit</button>
                 <div class="line"></div>
                 <br />
-              
-                <div>@Html.ActionLink("Sign Up" , "SignUp", "Login")</div>
-             
+
+                <div>@Html.ActionLink("Sign Up", "SignUp", "Login")</div>
+
             </form>
         </div>
         <div class="col"></div>
