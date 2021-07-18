@@ -1,6 +1,7 @@
 ﻿using BookReadingEvents.BusinessLogic;
 using BookReadingEvents.DataAccess.Services;
 using BookReadingEvents.Domain;
+using BookReadingEvents.ViewModels;
 using System.Web.Mvc;
 
 namespace BookReadingEvents.Controllers
@@ -25,13 +26,18 @@ namespace BookReadingEvents.Controllers
         }
 
         [HttpPost]
-        public ActionResult Index(User user) {
+        public ActionResult Index(LoginViewModel viewModel) {
+
+            User user = userData.GetUserByEmail(viewModel.Email);
+
 
             bool doesUserExist = userData.DoesUserExist(user);
 
             if (doesUserExist)
             {
-                return RedirectToAction("Index", "Events", new { id = user.UserId });
+                Session["Email"] = viewModel.Email;
+                Session["Id"] = user.UserId;
+                return RedirectToAction("Index", "Events");
             }
             else {
                 return View();
@@ -39,22 +45,25 @@ namespace BookReadingEvents.Controllers
   
         }
 
-
         [HttpGet]
         public ActionResult SignUp() {
             return View();
         }
 
         [HttpPost]
-        public ActionResult SignUp(User user) {
+        public ActionResult SignUp(User viewModel) {
            
-            userData.AddUser(user);
+                    
 
-            bool doesUserExist = userData.DoesUserExist(user);
+            userData.AddUser(viewModel);
+
+            bool doesUserExist = userData.DoesUserExist(viewModel);
 
             if (doesUserExist)
             {
-                return RedirectToAction("Index", "Events", new { id = user.UserId });
+                Session["Email"] = viewModel.Email;
+                Session["Id"] = viewModel.UserId;
+                return RedirectToAction("Index", "Events");
             }
             else
             {
