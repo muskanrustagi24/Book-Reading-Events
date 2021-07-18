@@ -27,8 +27,10 @@ namespace BookReadingEvents.Controllers
                       
 
         public ActionResult MyEvents()
-        { 
-            var model = eventData.GetAll();
+        {
+            string userEmail = Session["Email"].ToString();
+            User user = userData.GetUserByEmail(userEmail);
+            var model = eventData.GetAllEventsCreatedByUser(user.UserId);
             return View(model);
         }
 
