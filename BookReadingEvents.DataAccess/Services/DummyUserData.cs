@@ -41,6 +41,11 @@ namespace BookReadingEvents.DataAccess.Services
         {
             this.users = users.Append(user);
         }
+
+        public void UpdateUser(User user)
+        {
+            throw new NotImplementedException();
+        }
     }
 
 }

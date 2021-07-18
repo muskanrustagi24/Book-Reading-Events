@@ -15,6 +15,5 @@ namespace BookReadingEvents.DataAccess.Services
         void AddEvent(Event event_);
 
         void UpdateEvent(Event event_);
-
     }
 }
