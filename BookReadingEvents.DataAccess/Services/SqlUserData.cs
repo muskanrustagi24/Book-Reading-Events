@@ -10,9 +10,9 @@ namespace BookReadingEvents.DataAccess.Services
     {
         private readonly BookReadingEventsContext userData;
 
-        public SqlUserData(BookReadingEventsContext userData)
+        public SqlUserData()
         {
-            this.userData = userData;
+            this.userData = new BookReadingEventsContext();
         }
 
         public void AddUser(User user)

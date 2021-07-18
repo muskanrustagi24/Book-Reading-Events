@@ -2,7 +2,7 @@
 using BookReadingEvents.Domain;
 using System;
 using System.Collections.Generic;
-
+using System.Linq;
 namespace BookReadingEvents.BusinessLogic
 {
     public class EventBusinessLogic
@@ -11,7 +11,7 @@ namespace BookReadingEvents.BusinessLogic
 
         public EventBusinessLogic()
         {
-            eventData = new DummyEventData();
+            eventData = new SqlEventData();
         }
 
         public IEnumerable<Event> GetAllPublicEvents() {
@@ -20,7 +20,11 @@ namespace BookReadingEvents.BusinessLogic
         }
 
         public IEnumerable<Event> GetAllEventsCreatedByUser(Guid userId) {
-            return null;
+            var events = GetAll();
+            var evnts = from e in events
+                        where e.UserId == userId
+                        select e;
+            return evnts;
         }
 
         public void AddEvent(Event event_)

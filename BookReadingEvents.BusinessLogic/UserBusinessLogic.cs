@@ -10,7 +10,7 @@ namespace BookReadingEvents.BusinessLogic
         private readonly IUserData userData;
 
         public UserBusinessLogic() {
-            this.userData = new DummyUserData();
+            this.userData = new SqlUserData();
         }
 
         public User GetUserById(Guid id)
