@@ -9,11 +9,11 @@ namespace BookReadingEvents.DataAccess.Services
 {
     public class SqlEventData : IEventData
     {
-        private readonly BookReadingEventsContext eventData;
+        private readonly BookReadingEventsDbContext eventData;
 
         public SqlEventData()
         {
-            this.eventData = new BookReadingEventsContext();
+            this.eventData = new BookReadingEventsDbContext();
         }
 
         public void AddEvent(Event event_)

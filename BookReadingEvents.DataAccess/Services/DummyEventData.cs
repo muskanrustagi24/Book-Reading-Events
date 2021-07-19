@@ -35,15 +35,15 @@ namespace BookReadingEvents.DataAccess.Services
             var evnt = events.FirstOrDefault(e => e.EventId == id);
             return evnt;
         }
-   
+
         public IEnumerable<Event> GetEventsByUser(Guid id)
         {
             var evnt = from e in events
                        where e.UserId == id
                        select e;
-            
+
             return evnt;
-            
+
         }
 
         public IEnumerable<Event> GetPublicEvents()

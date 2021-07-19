@@ -16,7 +16,7 @@ namespace BookReadingEvents
             
             builder.RegisterType<SqlUserData>().As<IUserData>().InstancePerRequest();
             builder.RegisterType<SqlEventData>().As<IEventData>().InstancePerRequest();
-            builder.RegisterType<BookReadingEventsContext>().InstancePerRequest();
+            //builder.RegisterType<BookReadingEventsDbContext>().InstancePerRequest();
 
             var container = builder.Build();
 

@@ -47,5 +47,4 @@ namespace BookReadingEvents.DataAccess.Services
             throw new NotImplementedException();
         }
     }
-
 }

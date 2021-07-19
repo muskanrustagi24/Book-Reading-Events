@@ -47,7 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BookReadingEvents.DataAccess\BookReadingEvents.DataAccess.csproj">
-      <Project>{C1993A19-3EC6-4551-A53B-808DE0530310}</Project>
+      <Project>{cf080053-36b7-4e7d-8dd9-7120ae5d8e79}</Project>
       <Name>BookReadingEvents.DataAccess</Name>
     </ProjectReference>
     <ProjectReference Include="..\BookReadingEvents.Domain\BookReadingEvents.Domain.csproj">

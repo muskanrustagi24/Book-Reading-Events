@@ -8,11 +8,11 @@ namespace BookReadingEvents.DataAccess.Services
 {
     public class SqlUserData : IUserData
     {
-        private readonly BookReadingEventsContext userData;
+        private readonly BookReadingEventsDbContext userData;
 
         public SqlUserData()
         {
-            this.userData = new BookReadingEventsContext();
+            this.userData = new BookReadingEventsDbContext();
         }
 
         public void AddUser(User user)
