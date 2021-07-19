@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EventBusinessLogic.cs" />
+    <Compile Include="InvitessBusinessLogic.cs" />
     <Compile Include="UserBusinessLogic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

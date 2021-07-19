@@ -1,5 +1,7 @@
 ﻿using BookReadingEvents.Domain.Enums;
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace BookReadingEvents.Domain
@@ -7,6 +9,7 @@ namespace BookReadingEvents.Domain
     public class Event
     {
         [Key]
+        [System.ComponentModel.DataAnnotations.Schema.DatabaseGenerated(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.Identity)]
         public Guid EventId { get; set; }
 
         [Required]

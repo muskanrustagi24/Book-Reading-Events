@@ -35,6 +35,11 @@ namespace BookReadingEvents.BusinessLogic
             return userData.GetAll().FirstOrDefault(u => u.Email.Equals(email));
         }
 
+        public User IsUserVerified(string email , string password) {
+           var user = userData.GetAll().FirstOrDefault(u => u.Email.Equals(email) && u.Password.Equals(password));
+           return user;
+        }
+
      
     }
 }

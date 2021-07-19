@@ -29,20 +29,15 @@ namespace BookReadingEvents.Controllers
         [HttpPost]
         public ActionResult Index(LoginViewModel viewModel) {
 
-            User user = userData.GetUserByEmail(viewModel.Email);
-
-            bool doesUserExist = userData.DoesUserExist(user);
-
-            if (doesUserExist)
-            {
-                Session["Email"] = viewModel.Email;
-                Session["Id"] = user.UserId;
-                return RedirectToAction("Index", "Events");
-            }
-            else {
+            User user = userData.IsUserVerified(viewModel.Email, viewModel.Password);
+            if (user == null) {
                 return View();
             }
-  
+         
+             Session["Email"] = viewModel.Email;
+             Session["Id"] = user.UserId;
+             return RedirectToAction("Index", "Events");
+ 
         }
 
         [HttpGet]
