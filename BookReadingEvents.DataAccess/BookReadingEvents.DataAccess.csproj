@@ -54,8 +54,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\BookReadingEventsDbContext.cs" />
     <Compile Include="Services\DummyEventData.cs" />
+    <Compile Include="Services\DummyInviteeData.cs" />
     <Compile Include="Services\DummyUserData.cs" />
     <Compile Include="Services\IEventData.cs" />
+    <Compile Include="Services\IInviteeData.cs" />
     <Compile Include="Services\IUserData.cs" />
     <Compile Include="Services\SqlEventData.cs" />
     <Compile Include="Services\SqlUserData.cs" />

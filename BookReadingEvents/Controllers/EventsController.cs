@@ -1,7 +1,9 @@
 ﻿using BookReadingEvents.BusinessLogic;
 using BookReadingEvents.DataAccess.Services;
 using BookReadingEvents.Domain;
+using BookReadingEvents.ViewModels;
 using System;
+using System.Collections.Generic;
 using System.Web.Mvc;
 
 namespace BookReadingEvents.Controllers
@@ -19,13 +21,11 @@ namespace BookReadingEvents.Controllers
         }
 
         public ActionResult Index()
-        {
-             
+        {            
             var model = eventData.GetPublicEvents();
             return View(model);
         }
-                      
-
+   
         public ActionResult MyEvents()
         {
             string userEmail = Session["Email"].ToString();
@@ -40,11 +40,28 @@ namespace BookReadingEvents.Controllers
             return View();
         }
 
-        public ActionResult Create(Event event_)
+        [HttpPost]
+        public ActionResult Create(CreateEventViewModel viewModel)
         {
-            
-            return View();
-        }
+            Event myEvent = viewModel.Event;
+            User user = userData.GetUserByEmail(Session["Email"].ToString());
 
+           
+            myEvent.User = user;
+            myEvent.UserId = user.UserId;
+
+            //We have to save event before saving invitees
+            eventData.AddEvent(myEvent);
+
+           
+            //if length of string > 0 then we will save our invitees
+            if (viewModel.Invitees.Length > 0) {
+                InvitessBusinessLogic inviteeData = new InvitessBusinessLogic();
+                string[] inviteesList = viewModel.Invitees.Split(',');
+                inviteeData.SaveInvitees(inviteesList, myEvent.EventId, myEvent);
+            }
+           return View();
+        }
+   
     }
 }
