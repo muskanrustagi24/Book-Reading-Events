@@ -206,6 +206,7 @@
     <Content Include="Views\Login\AllEventsBeforeLoginSignup.cshtml" />
     <Content Include="Views\Login\Details.cshtml" />
     <Content Include="Views\Events\Create.cshtml" />
+    <Content Include="Views\Events\EventsInvitedTo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -61,6 +61,10 @@ namespace BookReadingEvents.Controllers
             }
            return View();
         }
-   
+        
+        public ActionResult EventsInvitedTo()
+        {
+            return View();
+        }
     }
 }

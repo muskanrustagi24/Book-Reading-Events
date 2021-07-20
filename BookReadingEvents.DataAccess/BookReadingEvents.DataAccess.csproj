@@ -60,6 +60,7 @@
     <Compile Include="Services\IInviteeData.cs" />
     <Compile Include="Services\IUserData.cs" />
     <Compile Include="Services\SqlEventData.cs" />
+    <Compile Include="Services\SqlInviteeData.cs" />
     <Compile Include="Services\SqlUserData.cs" />
   </ItemGroup>
   <ItemGroup>
