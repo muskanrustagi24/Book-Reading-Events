@@ -74,7 +74,7 @@ namespace BookReadingEvents.Controllers
         }
 
         [HttpGet]
-        public ActionResult Details(Guid id) {
+        public ActionResult Detail(Guid id) {
 
             Event myEvent = eventData.GetEventByEventId(id);
             return View(myEvent);
