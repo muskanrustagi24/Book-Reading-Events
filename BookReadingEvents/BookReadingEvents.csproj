@@ -157,6 +157,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\EventsController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\TableDataController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -206,6 +207,8 @@
     <Content Include="Views\Login\AllEventsBeforeLoginSignup.cshtml" />
     <Content Include="Views\Login\Details.cshtml" />
     <Content Include="Views\Events\Create.cshtml" />
+    <Content Include="Views\TableData\Edit.cshtml" />
+    <Content Include="Views\TableData\Detail.cshtml" />
     <Content Include="Views\Events\EventsInvitedTo.cshtml" />
   </ItemGroup>
   <ItemGroup>

@@ -13,8 +13,7 @@ namespace BookReadingEvents.Controllers
         
         private readonly EventBusinessLogic eventData;
         private readonly UserBusinessLogic userData;
-        
-
+    
         public EventsController() {
             userData = new UserBusinessLogic();
             eventData = new EventBusinessLogic();
@@ -44,10 +43,10 @@ namespace BookReadingEvents.Controllers
         public ActionResult Create(CreateEventViewModel viewModel)
         {
             Event myEvent = viewModel.Event;
+            myEvent.Date = DateTime.Parse(viewModel.Event.Date.ToString());
             User user = userData.GetUserByEmail(Session["Email"].ToString());
          
-            
-            myEvent.UserId = user.UserId;
+                  myEvent.UserId = user.UserId;
 
             //We have to save event before saving invitees
             eventData.AddEvent(myEvent);
