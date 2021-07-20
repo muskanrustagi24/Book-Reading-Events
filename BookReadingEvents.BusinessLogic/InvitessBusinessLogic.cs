@@ -20,7 +20,7 @@ namespace BookReadingEvents.BusinessLogic
             dummyInvitee.SaveInvitees(invitees, eventId);
         }
 
-        public IEnumerable<Event> GetInvitedToEvents(string email) {
+        public IEnumerable<Guid> GetInvitedToEvents(string email) {
            return dummyInvitee.GetInvitedToInvents(email);
         }
     

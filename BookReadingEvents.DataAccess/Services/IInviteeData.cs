@@ -11,6 +11,6 @@ namespace BookReadingEvents.DataAccess.Services
     {
         void SaveInvitees(string[] invitees, Guid eventId);
 
-        IEnumerable<Event> GetInvitedToInvents(string email);
+        IEnumerable<Guid> GetInvitedToInvents(string email);
    }
 }

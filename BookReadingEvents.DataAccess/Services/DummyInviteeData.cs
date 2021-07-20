@@ -14,11 +14,11 @@ namespace BookReadingEvents.DataAccess.Services
             inviteeList = new List<Invitee>();
         }
 
-        public IEnumerable<Event> GetInvitedToInvents(string email)
+        public IEnumerable<Guid> GetInvitedToInvents(string email)
         {
             var events = from i in inviteeList
                          where i.InviteeEmail == email
-                         select i.Event;
+                         select i.EventId;
             return events;
         }
 
@@ -27,7 +27,6 @@ namespace BookReadingEvents.DataAccess.Services
             foreach (string invitee in invitees) {
                 Invitee newInvitee = new Invitee
                 {   InviteeEmail = invitee,
-                    Event = myEvent,
                     EventId = eventId
                 };
                 inviteeList.Append(newInvitee);
