@@ -16,8 +16,8 @@ namespace BookReadingEvents.BusinessLogic
             dummyInvitee = new DummyInviteeData();
         }
 
-        public void SaveInvitees(string[] invitees , Guid eventId , Event myEvent){
-            dummyInvitee.SaveInvitees(invitees, eventId, myEvent);
+        public void SaveInvitees(string[] invitees , Guid eventId ){
+            dummyInvitee.SaveInvitees(invitees, eventId);
         }
 
         public IEnumerable<Event> GetInvitedToEvents(string email) {

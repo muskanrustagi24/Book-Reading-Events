@@ -45,9 +45,8 @@ namespace BookReadingEvents.Controllers
         {
             Event myEvent = viewModel.Event;
             User user = userData.GetUserByEmail(Session["Email"].ToString());
-
-           
-            myEvent.User = user;
+         
+            
             myEvent.UserId = user.UserId;
 
             //We have to save event before saving invitees
@@ -58,7 +57,7 @@ namespace BookReadingEvents.Controllers
             if (viewModel.Invitees.Length > 0) {
                 InvitessBusinessLogic inviteeData = new InvitessBusinessLogic();
                 string[] inviteesList = viewModel.Invitees.Split(',');
-                inviteeData.SaveInvitees(inviteesList, myEvent.EventId, myEvent);
+                inviteeData.SaveInvitees(inviteesList, myEvent.EventId);
             }
            return View();
         }

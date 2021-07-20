@@ -21,8 +21,6 @@ namespace BookReadingEvents.Domain
         [Required]
         public DateTime Date { get; set; }
 
-        public User User { get; set; }
-
         public Guid UserId { get; set; }
 
         [Required]

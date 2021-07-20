@@ -22,7 +22,7 @@ namespace BookReadingEvents.DataAccess.Services
             return events;
         }
 
-        public void SaveInvitees(string[] invitees, Guid eventId, Event myEvent)
+        public void SaveInvitees(string[] invitees, Guid eventId)
         {
             foreach (string invitee in invitees) {
                 Invitee newInvitee = new Invitee
