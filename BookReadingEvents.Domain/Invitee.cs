@@ -11,10 +11,7 @@ namespace BookReadingEvents.Domain
 
         [Required]
         public string InviteeEmail { get; set; }
-
-        [Required]
-        public Event Event { get; set; }
-
+      
         [Required]
         public Guid EventId { get; set; }
     }

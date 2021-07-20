@@ -9,7 +9,8 @@ namespace BookReadingEvents.DataAccess.Services
 {
    public interface IInviteeData
     {
-        void SaveInvitees(string[] invitees, Guid eventId, Event myEvent);
+        void SaveInvitees(string[] invitees, Guid eventId);
+
         IEnumerable<Event> GetInvitedToInvents(string email);
-    }
+   }
 }
