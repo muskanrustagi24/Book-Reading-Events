@@ -1,0 +1,39 @@
+﻿@model IEnumerable<BookReadingEvents.Domain.Invitee>
+
+@{
+    ViewBag.Title = "EventsInvitedTo";
+}
+
+<h2>EventsInvitedTo</h2>
+
+@*<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.InviteeEmail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EventId)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.InviteeEmail)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EventId)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.InviteeId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.InviteeId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.InviteeId })
+        </td>
+    </tr>
+}
+
+</table>*@
