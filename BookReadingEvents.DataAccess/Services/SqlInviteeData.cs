@@ -14,6 +14,21 @@ namespace BookReadingEvents.DataAccess.Services
             inviteeData = new BookReadingEventsDbContext();
         }
 
+        public void DeleteInvitees(Guid eventId)
+        {
+            IEnumerable<Invitee> inviteesToBeDeleted = from i in inviteeData.Invitees
+                                                       where i.EventId == eventId
+                                                       select i;
+
+            foreach (var invitee in inviteesToBeDeleted)
+            { 
+                inviteeData.Invitees.Remove(invitee);
+               
+            }
+
+            inviteeData.SaveChanges();
+        }
+
         public IEnumerable<Guid> GetInvitedToInvents(string email)
         {
             return from i in inviteeData.Invitees

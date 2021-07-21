@@ -11,9 +11,11 @@ namespace BookReadingEvents.Controllers
     public class TableDataController : Controller
     {
         private readonly EventBusinessLogic eventBusinessLogic;
+        private readonly InvitessBusinessLogic inviteesBusinessLogic;
         public TableDataController()
         {
             eventBusinessLogic = new EventBusinessLogic();
+            inviteesBusinessLogic = new InvitessBusinessLogic();
         }
 
         public ActionResult Index() {
@@ -49,6 +51,7 @@ namespace BookReadingEvents.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Delete(Guid eventId, FormCollection form)
         {
+            inviteesBusinessLogic.DeleteInvitees(eventId);
             eventBusinessLogic.DeleteEvent(eventId);
             return RedirectToAction("MyEvents", "Events");
         }

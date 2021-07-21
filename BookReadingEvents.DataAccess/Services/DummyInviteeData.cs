@@ -12,6 +12,11 @@ namespace BookReadingEvents.DataAccess.Services
             inviteeList = new List<Invitee>();
         }
 
+        public void DeleteInvitees(Guid eventId)
+        {
+            throw new NotImplementedException();
+        }
+
         public IEnumerable<Guid> GetInvitedToInvents(string email)
         {
             var events = from i in inviteeList

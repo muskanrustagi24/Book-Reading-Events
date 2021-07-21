@@ -25,6 +25,10 @@ namespace BookReadingEvents.BusinessLogic
         public IEnumerable<Guid> GetInvitedToEvents(string email) {
            return sqlInvitee.GetInvitedToInvents(email);
         }
-    
+        
+        public void DeleteInvitees(Guid eventId)
+        {
+            sqlInvitee.DeleteInvitees(eventId);
+        }
     }
 }
