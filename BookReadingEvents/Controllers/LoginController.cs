@@ -27,17 +27,17 @@ namespace BookReadingEvents.Controllers
         }
 
         [HttpPost]
-        public ActionResult Index(LoginViewModel viewModel) {
-
+        public ActionResult Index(LoginViewModel viewModel)
+        {
             User user = userData.IsUserVerified(viewModel.Email, viewModel.Password);
-            if (user == null) {
+            if (user == null)
+            {
                 return View();
             }
-         
-             Session["Email"] = viewModel.Email;
-             Session["Id"] = user.UserId;
-             return RedirectToAction("Index", "Events");
- 
+
+            Session["Email"] = viewModel.Email;
+            Session["Id"] = user.UserId;
+            return RedirectToAction("Index", "Events");
         }
 
         [HttpGet]
@@ -47,8 +47,6 @@ namespace BookReadingEvents.Controllers
 
         [HttpPost]
         public ActionResult SignUp(User viewModel) {
-                              
-
             userData.AddUser(viewModel);
 
             bool doesUserExist = userData.DoesUserExist(viewModel);
@@ -74,8 +72,7 @@ namespace BookReadingEvents.Controllers
         }
 
         [HttpGet]
-        public ActionResult Detail(Guid id) {
-
+        public ActionResult Details(Guid id) {
             Event myEvent = eventData.GetEventByEventId(id);
             return View(myEvent);
         }

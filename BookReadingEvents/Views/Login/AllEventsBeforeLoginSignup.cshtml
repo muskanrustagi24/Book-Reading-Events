@@ -5,10 +5,10 @@
     Layout = "~/Views/Shared/_LayoutLoginSignup.cshtml";
 }
 
-<h2>AllEventsBeforeLoginSignup</h2>
+<h2>Events</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+ 
 </p>
 <table class="table">
     <tr>
@@ -21,10 +21,7 @@
         <th>
             @Html.DisplayNameFor(model => model.Date)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.UserId)
-        </th>
-        <th>
+         <th>
             @Html.DisplayNameFor(model => model.Duration)
         </th>
         <th>
@@ -45,10 +42,7 @@
             @Html.DisplayFor(modelItem => item.Location)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Date)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.UserId)
+            @Html.DisplayFor(modelItem => item.Date.Date)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Duration)

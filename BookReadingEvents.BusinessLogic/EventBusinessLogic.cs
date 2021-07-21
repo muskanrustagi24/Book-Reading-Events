@@ -62,5 +62,20 @@ namespace BookReadingEvents.BusinessLogic
         {
             this.eventData.DeleteEvent(id);
         }
+      
+        public IEnumerable<Event> GetAllUpcomingEvents() { 
+            var upcomingEvents = from e in eventData.GetAll()
+                                 where e.Date > DateTime.Now
+                                 select e;
+            return upcomingEvents;
+        }
+
+        public IEnumerable<Event> GetAllPastEvents() {
+            var pastEvents = from e in eventData.GetAll()
+                             where e.Date < DateTime.Now
+                             select e;
+            return pastEvents;
+        }
+ 
     }
 }
