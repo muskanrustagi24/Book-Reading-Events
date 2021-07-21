@@ -17,5 +17,7 @@ namespace BookReadingEvents.DataAccess.Services
         void UpdateEvent(Event event_);
 
         Event GetEventByEventId(Guid id);
+
+        void DeleteEvent(Guid id);
     }
 }

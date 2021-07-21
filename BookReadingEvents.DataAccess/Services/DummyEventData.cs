@@ -25,6 +25,11 @@ namespace BookReadingEvents.DataAccess.Services
             events.Append(event_);
         }
 
+        public void DeleteEvent(Guid id)
+        {
+            throw new NotImplementedException();
+        }
+
         public IEnumerable<Event> GetAll()
         {
             return events.OrderBy(e => e.Date);

@@ -57,5 +57,10 @@ namespace BookReadingEvents.BusinessLogic
         {
             this.eventData.UpdateEvent(event_);
         }
+
+        public void DeleteEvent(Guid id)
+        {
+            this.eventData.DeleteEvent(id);
+        }
     }
 }
