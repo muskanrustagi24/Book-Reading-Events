@@ -216,12 +216,11 @@
     <Content Include="Views\Shared\_EventsPartialView.cshtml" />
     <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
-    <Content Include="Views\Admin\PublicEvents.cshtml" />
-    <Content Include="Views\Admin\PrivateEvents.cshtml" />
     <Content Include="Views\Admin\FutureEvents.cshtml" />
     <Content Include="Views\Admin\PastEvents.cshtml" />
     <Content Include="Views\Admin\Edit.cshtml" />
     <Content Include="Views\Admin\Details.cshtml" />
+    <Content Include="Views\Admin\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
