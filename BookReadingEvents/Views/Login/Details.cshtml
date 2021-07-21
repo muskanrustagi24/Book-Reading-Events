@@ -32,7 +32,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Date)
+            @Html.DisplayFor(model => model.Date.Date)
         </dd>
 
         <dt>
@@ -70,6 +70,5 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.EventId }) |
-    @Html.ActionLink("Back to List", "Index")
+   @Html.ActionLink("Back to List", "AllEventsBeforeLoginSignup")
 </p>
