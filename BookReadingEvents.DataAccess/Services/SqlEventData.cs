@@ -22,6 +22,13 @@ namespace BookReadingEvents.DataAccess.Services
             eventData.SaveChanges();
         }
 
+        public void DeleteEvent(Guid id)
+        {
+            var event_ = eventData.Events.Find(id);
+            eventData.Events.Remove(event_);
+            eventData.SaveChanges();
+        }
+
         public IEnumerable<Event> GetAll()
         {
             return eventData.Events.OrderBy(e => e.EventId);

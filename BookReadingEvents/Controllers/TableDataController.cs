@@ -36,5 +36,21 @@ namespace BookReadingEvents.Controllers
             var model = eventBusinessLogic.GetEventByEventId(eventId);
             return View(model);
         }
+
+        [HttpGet]
+        public ActionResult Delete(Guid eventId)
+        {
+            var model = eventBusinessLogic.GetEventByEventId(eventId);
+            return View(model);
+        }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Delete(Guid eventId, FormCollection form)
+        {
+            eventBusinessLogic.DeleteEvent(eventId);
+            return RedirectToAction("MyEvents", "Events");
+        }
     }
 }
