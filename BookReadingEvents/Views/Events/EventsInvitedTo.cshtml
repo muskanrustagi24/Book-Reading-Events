@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>EventsInvitedTo</h2>
+<h2>You have been invited!</h2>
 
 @if (Model == null)
 {
@@ -20,13 +20,13 @@
                 @Html.DisplayNameFor(model => model.Title)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Location)
+                @Html.DisplayNameFor(model => model.Description)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Date)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.UserId)
+                @Html.DisplayNameFor(model => model.Location)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Duration)
@@ -34,9 +34,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.OtherDetails)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Description)
-            </th>
+
             <th></th>
         </tr>
 
@@ -47,13 +45,13 @@
                     @Html.DisplayFor(modelItem => item.Title)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Location)
+                    @Html.DisplayFor(modelItem => item.Description)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Date)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.UserId)
+                    @Html.DisplayFor(modelItem => item.Location)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Duration)
@@ -62,14 +60,12 @@
                     @Html.DisplayFor(modelItem => item.OtherDetails)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Description)
-                </td>
-                <td>
-                    @Html.ActionLink("Details", "Details", new { id = item.EventId })
+                    @Html.ActionLink("Details", "Detail", "TableData", new { eventId = item.EventId }, null)
                 </td>
             </tr>
         }
 
     </table>
+
 
 }
