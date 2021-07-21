@@ -94,6 +94,11 @@ namespace BookReadingEvents.Controllers
             return View(model);
         }
 
+        [HttpPost]
+        public ActionResult Delete(Event myEvent) {
+            eventBusinessLogic.DeleteEvent(myEvent.EventId);
+            return RedirectToAction("Index");
+        }
     
     }
 

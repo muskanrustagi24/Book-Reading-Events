@@ -54,9 +54,9 @@
                 @Html.DisplayFor(modelItem => item.User.Email)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.Event.EventId }) |
-                @Html.ActionLink("Details", "Details", new { id = item.Event.EventId }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.Event.EventId })
+                @Html.ActionLink("Edit", "Edit", new { eventId = item.Event.EventId }) |
+                @Html.ActionLink("Details", "Details", new { eventId = item.Event.EventId }) |
+                @Html.ActionLink("Delete", "Delete", new { eventId = item.Event.EventId })
             </td>
         </tr>
     }
