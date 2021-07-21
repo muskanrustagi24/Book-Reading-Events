@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BookReadingEvents.Domain;
+using System;
 using System.Collections.Generic;
 
 namespace BookReadingEvents.DataAccess.Services
@@ -8,7 +9,7 @@ namespace BookReadingEvents.DataAccess.Services
         void SaveInvitees(string[] invitees, Guid eventId);
 
         IEnumerable<Guid> GetInvitedToInvents(string email);
-
-        //void DeleteInvitees(Guid EventId);
-   }
+      
+        void DeleteInvitees(Guid eventId);
+    }
 }
