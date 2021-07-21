@@ -1,39 +1,75 @@
-﻿@model IEnumerable<BookReadingEvents.Domain.Invitee>
+﻿@model IEnumerable<BookReadingEvents.Domain.Event>
 
 @{
     ViewBag.Title = "EventsInvitedTo";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>EventsInvitedTo</h2>
 
-@*<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.InviteeEmail)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.EventId)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.InviteeEmail)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EventId)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.InviteeId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.InviteeId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.InviteeId })
-        </td>
-    </tr>
+@if (Model == null)
+{
+    <h1>You have not been invited to any events!</h1>
 }
 
-</table>*@
+@if (Model != null)
+{
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Location)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Duration)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OtherDetails)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Location)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Duration)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OtherDetails)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.ActionLink("Details", "Details", new { id = item.EventId })
+                </td>
+            </tr>
+        }
+
+    </table>
+
+}

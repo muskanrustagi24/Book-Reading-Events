@@ -5,6 +5,7 @@ using BookReadingEvents.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Web.Mvc;
+using System.Linq;
 
 namespace BookReadingEvents.Controllers
 {
@@ -13,10 +14,13 @@ namespace BookReadingEvents.Controllers
         
         private readonly EventBusinessLogic eventData;
         private readonly UserBusinessLogic userData;
+        private readonly IInviteeData inviteeData;
     
         public EventsController() {
             userData = new UserBusinessLogic();
             eventData = new EventBusinessLogic();
+            inviteeData = new SqlInviteeData();
+           
         }
 
         public ActionResult Index()
@@ -54,7 +58,6 @@ namespace BookReadingEvents.Controllers
            
             //if length of string > 0 then we will save our invitees
             if (viewModel.Invitees.Length > 0) {
-                InvitessBusinessLogic inviteeData = new InvitessBusinessLogic();
                 string[] inviteesList = viewModel.Invitees.Split(',');
                 inviteeData.SaveInvitees(inviteesList, myEvent.EventId);
             }
@@ -63,7 +66,13 @@ namespace BookReadingEvents.Controllers
         
         public ActionResult EventsInvitedTo()
         {
-            return View();
+            var eventIds = inviteeData.GetInvitedToInvents(Session["Email"].ToString());
+
+            var model = from e in eventIds
+                        select eventData.GetEventByEventId(e);
+
+
+            return View(model);
         }
     }
 }
