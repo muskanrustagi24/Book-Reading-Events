@@ -53,6 +53,14 @@ namespace BookReadingEvents.BusinessLogic
             return this.eventData.GetPublicEvents();
         }
 
+        public IEnumerable<Event> GetPrivateEvents() {
+            var events = from e in GetAll()
+                         where e.TypeOfEvent == Domain.Enums.EventType.Private
+                         select e;
+            return events;
+        }
+
+
         public void UpdateEvent(Event event_)
         {
             this.eventData.UpdateEvent(event_);
