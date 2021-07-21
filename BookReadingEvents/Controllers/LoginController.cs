@@ -1,6 +1,7 @@
 ﻿using BookReadingEvents.BusinessLogic;
 using BookReadingEvents.DataAccess.Services;
 using BookReadingEvents.Domain;
+using BookReadingEvents.Domain.Enums;
 using BookReadingEvents.ViewModels;
 using System;
 using System.Web.Mvc;
@@ -47,6 +48,16 @@ namespace BookReadingEvents.Controllers
 
         [HttpPost]
         public ActionResult SignUp(User viewModel) {
+            bool isAdmin = viewModel.Email.Contains("admin");
+            
+            if (isAdmin)
+            {
+                viewModel.Role =  UserType.Admin;
+            }
+            else {
+                viewModel.Role = UserType.Normal;
+            }
+            
             userData.AddUser(viewModel);
 
             bool doesUserExist = userData.DoesUserExist(viewModel);
@@ -71,6 +82,10 @@ namespace BookReadingEvents.Controllers
             return View(model);
         }
 
+        public ActionResult RenderEventsPartialView() {
+            return PartialView("_EventsPartialView");
+        }
+        
         [HttpGet]
         public ActionResult Details(Guid id) {
             Event myEvent = eventData.GetEventByEventId(id);

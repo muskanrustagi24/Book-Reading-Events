@@ -55,9 +55,12 @@
         @Html.DisplayFor(modelItem => item.OtherDetails)
     </td>
     <td>
-        @Html.ActionLink("Edit", "Edit", "TableData" , new {eventId = item.EventId} , null) |
-        @Html.ActionLink("Details", "Detail", "TableData", new {eventId = item.EventId } , null) |
-        @Html.ActionLink("Delete", "Delete", "TableData", new { eventId = item.EventId } , null)
+        @Html.ActionLink("Details", "Detail", "TableData", new { eventId = item.EventId }, null) |
+        @Html.ActionLink("Delete", "Delete", "TableData", new { eventId = item.EventId }, null) |
+        
+        @if (item.Date > DateTime.Now) {
+        <span>@Html.ActionLink("Edit", "Edit", "TableData", new { eventId = item.EventId }, null)</span> 
+        }
     </td>
 </tr>
 }
