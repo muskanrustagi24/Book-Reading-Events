@@ -8,5 +8,7 @@ namespace BookReadingEvents.DataAccess.Services
         void SaveInvitees(string[] invitees, Guid eventId);
 
         IEnumerable<Guid> GetInvitedToInvents(string email);
+
+        //void DeleteInvitees(Guid EventId);
    }
 }
