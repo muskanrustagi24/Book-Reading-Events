@@ -221,6 +221,7 @@
     <Content Include="Views\Admin\FutureEvents.cshtml" />
     <Content Include="Views\Admin\PastEvents.cshtml" />
     <Content Include="Views\Admin\Edit.cshtml" />
+    <Content Include="Views\Admin\Delete.cshtml" />
     <Content Include="Views\Admin\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
