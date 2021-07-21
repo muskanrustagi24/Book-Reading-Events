@@ -31,10 +31,14 @@ namespace BookReadingEvents.Controllers
         public ActionResult Index(LoginViewModel viewModel)
         {
             User user = userData.IsUserVerified(viewModel.Email, viewModel.Password);
+            
             if (user == null)
             {
                 return View();
             }
+
+            //if user is admin
+            //==> different controller
 
             Session["Email"] = viewModel.Email;
             Session["Id"] = user.UserId;
