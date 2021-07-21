@@ -36,7 +36,7 @@ namespace BookReadingEvents.DataAccess.Services
 
         public Event GetEventByEventId(Guid id)
         {
-            return eventData.Events.FirstOrDefault(e => e.EventId == id);
+            return eventData.Events.FirstOrDefault(e => e.EventId.Equals(id));
         }
 
         public IEnumerable<Event> GetEventsByUser(Guid id)

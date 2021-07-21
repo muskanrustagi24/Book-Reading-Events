@@ -1,0 +1,64 @@
+﻿@model IEnumerable<BookReadingEvents.ViewModels.AdminViewModel>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>All Private Events</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Event.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Event.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Event.Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Event.Location)
+        </th>
+        <th>
+            Event Type
+        </th>
+        <th>
+            Created By
+        </th>
+
+        <th></th>
+    </tr>
+
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Event.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Event.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Event.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Event.Location)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Event.TypeOfEvent)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.User.Email)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Event.EventId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Event.EventId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Event.EventId })
+            </td>
+        </tr>
+    }
+
+</table>

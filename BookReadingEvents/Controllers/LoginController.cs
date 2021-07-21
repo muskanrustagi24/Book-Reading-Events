@@ -37,8 +37,11 @@ namespace BookReadingEvents.Controllers
                 return View();
             }
 
-            //if user is admin
-            //==> different controller
+            if (user.Role == UserType.Admin) {
+                return RedirectToAction("Index", "Admin");
+            }
+
+           
 
             Session["Email"] = viewModel.Email;
             Session["Id"] = user.UserId;
