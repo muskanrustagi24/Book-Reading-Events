@@ -10,18 +10,20 @@ namespace BookReadingEvents.BusinessLogic
 {
    public class InvitessBusinessLogic
     {
-        private readonly DummyInviteeData dummyInvitee;
+      
+        private readonly IInviteeData sqlInvitee;
 
         public InvitessBusinessLogic() {
-            dummyInvitee = new DummyInviteeData();
+           
+            sqlInvitee = new SqlInviteeData();
         }
 
         public void SaveInvitees(string[] invitees , Guid eventId ){
-            dummyInvitee.SaveInvitees(invitees, eventId);
+            sqlInvitee.SaveInvitees(invitees, eventId);
         }
 
         public IEnumerable<Guid> GetInvitedToEvents(string email) {
-           return dummyInvitee.GetInvitedToInvents(email);
+           return sqlInvitee.GetInvitedToInvents(email);
         }
     
     }
