@@ -5,58 +5,14 @@
     Layout = "~/Views/Shared/_LayoutLoginSignup.cshtml";
 }
 
-<h2>Events</h2>
+<h1>Upcoming Events!</h1>
 
-<p>
- 
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Title)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Location)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Date)
-        </th>
-         <th>
-            @Html.DisplayNameFor(model => model.Duration)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.OtherDetails)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Description)
-        </th>
-        <th></th>
-    </tr>
+<div>
+    @Html.Partial("_EventsPartialView", Model.Where(e => e.Date > DateTime.Now))
+</div>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Title)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Location)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Date.Date)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Duration)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.OtherDetails)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
-        <td>
-            @Html.ActionLink("Details", "Details", new { id=item.EventId })
-        </td>
-    </tr>
-}
+<h1>Past Events!</h1>
 
-</table>
+<div>
+    @Html.Partial("_EventsPartialView", Model.Where(e => e.Date < DateTime.Now))
+</div>

@@ -50,6 +50,7 @@ namespace BookReadingEvents.DataAccess.Services
         {
             return from e in eventData.Events
                    where e.TypeOfEvent == EventType.Public
+                   orderby e.Date descending
                    select e;
         }
 

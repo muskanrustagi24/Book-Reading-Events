@@ -28,7 +28,11 @@ namespace BookReadingEvents.Controllers
             var model = eventData.GetPublicEvents();
             return View(model);
         }
-   
+
+        public ActionResult RenderEventsPartialView() {
+            return PartialView("_EventsPartialView");
+        }
+
         public ActionResult MyEvents()
         {
             string userEmail = Session["Email"].ToString();
@@ -47,14 +51,18 @@ namespace BookReadingEvents.Controllers
         public ActionResult Create(CreateEventViewModel viewModel)
         {
             Event myEvent = viewModel.Event;
-            myEvent.Date = DateTime.Parse(viewModel.Date);
             TimeSpan time = TimeSpan.Parse(viewModel.Time);
-                    
+            myEvent.Date = new DateTime();
+            myEvent.Date = DateTime.Parse(viewModel.Date);
+            myEvent.Date.Add(time);
+            
+            var demo = myEvent.Date;
             User user = userData.GetUserByEmail(Session["Email"].ToString());
             myEvent.UserId = user.UserId;
 
             if (ModelState.IsValid) {
                 eventData.AddEvent(myEvent);
+
                 //if length of string > 0 then we will save our invitees
                 if (viewModel.Invitees.Length > 0)
                 {
@@ -64,7 +72,6 @@ namespace BookReadingEvents.Controllers
                 }
                 return RedirectToAction("MyEvents");
             }
-            
             return View();
         }
         
@@ -74,7 +81,6 @@ namespace BookReadingEvents.Controllers
 
             var model = from e in eventIds
                         select eventData.GetEventByEventId(e);
-
 
             return View(model);
         }

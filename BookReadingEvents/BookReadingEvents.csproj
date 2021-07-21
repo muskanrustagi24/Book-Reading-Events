@@ -211,6 +211,7 @@
     <Content Include="Views\TableData\Detail.cshtml" />
     <Content Include="Views\Events\EventsInvitedTo.cshtml" />
     <Content Include="Views\TableData\Delete.cshtml" />
+    <Content Include="Views\Shared\_EventsPartialView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
