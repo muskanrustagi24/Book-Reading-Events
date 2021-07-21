@@ -43,27 +43,40 @@ namespace BookReadingEvents.Controllers
         public ActionResult Create(CreateEventViewModel viewModel)
         {
             Event myEvent = viewModel.Event;
-            myEvent.Date = DateTime.Parse(viewModel.Event.Date.ToString());
+            myEvent.Date = DateTime.Parse(viewModel.Date);
+            TimeSpan time = TimeSpan.Parse(viewModel.Time);
+          
+            
             User user = userData.GetUserByEmail(Session["Email"].ToString());
-         
-                  myEvent.UserId = user.UserId;
+            myEvent.UserId = user.UserId;
 
-            //We have to save event before saving invitees
-            eventData.AddEvent(myEvent);
+            if (ModelState.IsValid) {
+                eventData.AddEvent(myEvent);
 
-           
-            //if length of string > 0 then we will save our invitees
-            if (viewModel.Invitees.Length > 0) {
-                InvitessBusinessLogic inviteeData = new InvitessBusinessLogic();
-                string[] inviteesList = viewModel.Invitees.Split(',');
-                inviteeData.SaveInvitees(inviteesList, myEvent.EventId);
+
+                //if length of string > 0 then we will save our invitees
+                if (viewModel.Invitees.Length > 0)
+                {
+                    InvitessBusinessLogic inviteeData = new InvitessBusinessLogic();
+                    string[] inviteesList = viewModel.Invitees.Split(',');
+                    inviteeData.SaveInvitees(inviteesList, myEvent.EventId);
+                }
+                return RedirectToAction("MyEvents");
             }
-           return View();
+            //We have to save event before saving invitees
+            return View();
         }
         
         public ActionResult EventsInvitedTo()
         {
             return View();
         }
+
+        public ActionResult Logout() {
+            Session["Email"] = null;
+            Session["Id"] = null;
+            return RedirectToAction("AllEventsBeforeLoginSignup","Login");
+        }
+    
     }
 }
