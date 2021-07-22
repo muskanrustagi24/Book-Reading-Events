@@ -18,12 +18,16 @@ namespace BookReadingEvents.BusinessLogic
             sqlInvitee = new SqlInviteeData();
         }
 
-        public void SaveInvitees(string[] invitees , Guid eventId ){
-            sqlInvitee.SaveInvitees(invitees, eventId);
+        public void SaveInvitees(string invitees , Guid eventId ){
+            if (invitees.Length > 0) {
+                string[] inviteeArray = invitees.Split(',');
+                sqlInvitee.SaveInvitees(inviteeArray, eventId);
+            }
         }
 
         public IEnumerable<Guid> GetInvitedToEvents(string email) {
-           return sqlInvitee.GetInvitedToInvents(email);
+           var invitedTo = sqlInvitee.GetInvitedToInvents(email);
+           return invitedTo;
         }
         
         public void DeleteInvitees(Guid eventId)

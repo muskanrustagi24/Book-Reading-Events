@@ -23,7 +23,7 @@ namespace BookReadingEvents.DataAccess.Services
 
         public bool DoesUserExist(User user)
         {
-            var loginUser = userData.Users.FirstOrDefault(u => (u.Email == user.Email && u.Password == user.Password));
+            var loginUser = userData.Users.FirstOrDefault(u => (u.Email.Equals(user.Email) && u.Password.Equals(user.Password)));
             return loginUser != null;
         }
 

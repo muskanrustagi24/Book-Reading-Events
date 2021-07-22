@@ -29,7 +29,7 @@ namespace BookReadingEvents.BusinessLogic
 
         public void AddEvent(Event event_)
         {
-            this.eventData.AddEvent(event_);
+           eventData.AddEvent(event_);
         }
 
         public IEnumerable<Event> GetAll()
