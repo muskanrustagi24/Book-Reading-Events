@@ -87,11 +87,5 @@ namespace BookReadingEvents.BusinessLogic
             return flag;
          
         }
-        
-        
-
-
-
-
     }
 }
