@@ -73,8 +73,7 @@ namespace BookReadingEvents.Controllers
         {
             var eventIds = inviteeData.GetInvitedToEvents(Session["Email"].ToString());
 
-            var model = from e in eventIds
-                        select eventData.GetEventByEventId(e);
+            var model = eventData.GetAllEventsByEventIds(eventIds);
 
             return View(model);
         }

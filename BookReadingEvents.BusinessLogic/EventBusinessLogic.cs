@@ -84,6 +84,12 @@ namespace BookReadingEvents.BusinessLogic
                              select e;
             return pastEvents;
         }
- 
+
+        public IEnumerable<Event> GetAllEventsByEventIds(IEnumerable<Guid> eventIds) {
+            return from e in eventIds
+                        select GetEventByEventId(e);
+         
+        }
+
     }
 }
