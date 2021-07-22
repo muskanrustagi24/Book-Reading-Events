@@ -59,9 +59,13 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.OtherDetails)
                 </td>
+
+                @if (item != null) { 
                 <td>
-                    @Html.ActionLink("Details", "Detail", "TableData", new { eventId = item.EventId }, null)
+                @Html.ActionLink("Details", "Detail", "TableData", new { eventId = item.EventId }, null)
                 </td>
+                 }
+                
             </tr>
         }
 

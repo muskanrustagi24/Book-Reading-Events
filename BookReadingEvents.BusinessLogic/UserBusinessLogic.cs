@@ -40,6 +40,58 @@ namespace BookReadingEvents.BusinessLogic
            return user;
         }
 
-     
+        public int LoginVerifications(User user) {
+            int flag = -1;
+            var verfiedUser = GetUserByEmail(user.Email);
+
+            if (verfiedUser != null && verfiedUser.Password.Equals(user.Password))
+            {
+                if (verfiedUser.Role == Domain.Enums.UserType.Admin)
+                {
+                    flag = 1;
+                }
+                else
+                {
+                    flag = 0;
+                }
+
+            }
+
+            return flag;
+        }
+
+        public int SignUpVerifications(User user) {
+
+            int flag;
+
+            if (user.Email.Equals("admin@gmail.com"))
+            {
+                user.Role = Domain.Enums.UserType.Admin;
+                flag = 1;
+            }
+            else {
+                user.Role = Domain.Enums.UserType.Normal;
+                flag = 0;
+            }
+
+            var userWithSameEmail = GetUserByEmail(user.Email);
+
+            if (userWithSameEmail != null)
+            {
+                flag = -1;
+            }
+            else {
+                userData.AddUser(user);                             
+            }
+
+            return flag;
+         
+        }
+        
+        
+
+
+
+
     }
 }

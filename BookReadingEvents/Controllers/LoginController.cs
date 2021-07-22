@@ -30,22 +30,33 @@ namespace BookReadingEvents.Controllers
         [HttpPost]
         public ActionResult Index(LoginViewModel viewModel)
         {
-            User user = userData.IsUserVerified(viewModel.Email, viewModel.Password);
-            
-            if (user == null)
+            User user = new User
             {
-                return View();
-            }
+                Email = viewModel.Email,
+                Password = viewModel.Password 
 
-            if (user.Role == UserType.Admin) {
+            };
+           
+            // 1 ==> Admin 0 ==> Normal  -1 ==> Does not exist
+            int loginFlag = userData.LoginVerifications(user);
+
+            if (loginFlag == 0)
+            {
+                user = userData.GetUserByEmail(user.Email);
+                Session["Email"] = user.Email;
+                Session["Id"] = user.UserId;
+                return RedirectToAction("Index", "Events");
+            }
+            else if (loginFlag == 1)
+            {
+                user = userData.GetUserByEmail(user.Email);
+                Session["Email"] = user.Email;
+                Session["Id"] = user.UserId;
                 return RedirectToAction("Index", "Admin");
             }
-
-           
-
-            Session["Email"] = viewModel.Email;
-            Session["Id"] = user.UserId;
-            return RedirectToAction("Index", "Events");
+            else {
+                return View();
+            }
         }
 
         [HttpGet]
@@ -55,31 +66,32 @@ namespace BookReadingEvents.Controllers
 
         [HttpPost]
         public ActionResult SignUp(User viewModel) {
-            bool isAdmin = viewModel.Email.Contains("admin");
-            
-            if (isAdmin)
-            {
-                viewModel.Role =  UserType.Admin;
-            }
-            else {
-                viewModel.Role = UserType.Normal;
-            }
-            
-            userData.AddUser(viewModel);
 
-            bool doesUserExist = userData.DoesUserExist(viewModel);
-
-            if (doesUserExist)
+            User user = new User
             {
-                Session["Email"] = viewModel.Email;
-                Session["Id"] = viewModel.UserId;
-                return RedirectToAction("Index", "Events");
-            }
-            else
+                Email = viewModel.Email,
+                Password = viewModel.Password
+            };
+
+            int canUserBeAdded = userData.SignUpVerifications(user);
+            
+            if (canUserBeAdded == -1)
             {
                 return View();
             }
-
+            else if (canUserBeAdded == 0)
+            {
+                user = userData.GetUserByEmail(user.Email);
+                Session["Email"] = user.Email;
+                Session["Id"] = user.UserId;
+                return RedirectToAction("Index" , "Events");
+            }
+            else{
+                user = userData.GetUserByEmail(user.Email);
+                Session["Email"] = user.Email;
+                Session["Id"] = user.UserId;
+                return RedirectToAction("Index", "Admin");
+            }
         }
 
         [HttpGet]

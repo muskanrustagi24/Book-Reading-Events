@@ -46,7 +46,6 @@ namespace BookReadingEvents.Controllers
             return View(model);
         }
 
-
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(Guid eventId, FormCollection form)
