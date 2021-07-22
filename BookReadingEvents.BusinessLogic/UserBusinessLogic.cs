@@ -60,8 +60,8 @@ namespace BookReadingEvents.BusinessLogic
             return flag;
         }
 
-        public int SignUpVerifications(User user) {
-
+        public int SignUpVerifications(User user) 
+        {
             int flag;
 
             if (user.Email.Equals("admin@gmail.com"))
@@ -69,7 +69,7 @@ namespace BookReadingEvents.BusinessLogic
                 user.Role = Domain.Enums.UserType.Admin;
                 flag = 1;
             }
-            else {
+            else{
                 user.Role = Domain.Enums.UserType.Normal;
                 flag = 0;
             }
@@ -80,7 +80,7 @@ namespace BookReadingEvents.BusinessLogic
             {
                 flag = -1;
             }
-            else {
+            else{
                 userData.AddUser(user);                             
             }
 

@@ -59,5 +59,49 @@ namespace UnitTestProject
             //Assert
             Assert.AreEqual(expectedResult, actualResult);
         }
+
+        [Theory]
+        [InlineData]
+        public void TestMethod3(Mock<UserBusinessLogic> userData, UserBusinessLogic sut)
+        {
+            int expectedResult = 0;
+
+            userData.Setup(ed => ed.LoginVerifications(It.IsAny<User>())).Returns(expectedResult);
+            User checkUser = new User
+            {
+                Email = "abc@gmail.com",
+                Password = "12345678",
+                Role = UserType.Normal
+            };
+
+            UserBusinessLogic user = new UserBusinessLogic();
+            int actualResult = user.LoginVerifications(checkUser);
+
+            Assert.AreEqual(expectedResult, actualResult);
+
+        }
+
+
+        [Theory]
+        [InlineData]
+        public void TestMethod4(Mock<UserBusinessLogic> userData, UserBusinessLogic sut)
+        {
+            int expectedResult = 0;
+
+            userData.Setup(ed => ed.SignUpVerifications(It.IsAny<User>())).Returns(expectedResult);
+            User checkUser = new User
+            {
+                Email = "abc@gmail.com",
+                Password = "12345678",
+                Role = UserType.Normal
+            };
+
+            UserBusinessLogic user = new UserBusinessLogic();
+            int actualResult = user.SignUpVerifications(checkUser);
+
+            Assert.AreEqual(expectedResult, actualResult);
+
+        }
+
     }
 }
