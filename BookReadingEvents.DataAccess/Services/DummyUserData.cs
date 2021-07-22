@@ -46,5 +46,10 @@ namespace BookReadingEvents.DataAccess.Services
         {
             throw new NotImplementedException();
         }
+
+        public User GetUserByEmail(string email)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

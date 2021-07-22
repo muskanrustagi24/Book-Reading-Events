@@ -32,6 +32,11 @@ namespace BookReadingEvents.DataAccess.Services
             return userData.Users.OrderBy(u => u.UserId);
         }
 
+        public User GetUserByEmail(string email)
+        {
+            return userData.Users.FirstOrDefault(u => u.Email.Equals(email));
+        }
+
         public User GetUserById(Guid id)
         {
             return userData.Users.FirstOrDefault(u => u.UserId == id);

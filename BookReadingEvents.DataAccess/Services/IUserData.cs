@@ -15,5 +15,7 @@ namespace BookReadingEvents.DataAccess.Services
         void AddUser(User user);
 
         void UpdateUser(User user);
+
+        User GetUserByEmail(string email);
     }
 }
