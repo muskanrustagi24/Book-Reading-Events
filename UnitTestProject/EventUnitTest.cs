@@ -9,7 +9,7 @@ using Xunit;
 
 namespace UnitTestProject
 {
-    public class UnitTest1
+    public class EventUnitTest
     {
         [Theory]
         [InlineData]
