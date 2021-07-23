@@ -36,27 +36,36 @@ namespace BookReadingEvents.Controllers
                 Password = viewModel.Password 
 
             };
-           
-            // 1 ==> Admin 0 ==> Normal  -1 ==> Does not exist
-            int loginFlag = userData.LoginVerifications(user);
 
-            if (loginFlag == 0)
+            if (ModelState.IsValid)
             {
-                user = userData.GetUserByEmail(user.Email);
-                Session["Email"] = user.Email;
-                Session["Id"] = user.UserId;
-                return RedirectToAction("Index", "Events");
-            }
-            else if (loginFlag == 1)
-            {
-                user = userData.GetUserByEmail(user.Email);
-                Session["Email"] = user.Email;
-                Session["Id"] = user.UserId;
-                return RedirectToAction("Index", "Admin");
+                int loginFlag = userData.LoginVerifications(user);
+
+                if (loginFlag == 0)
+                {
+                    user = userData.GetUserByEmail(user.Email);
+                    Session["Email"] = user.Email;
+                    Session["Id"] = user.UserId;
+                    return RedirectToAction("Index", "Events");
+                }
+                else if (loginFlag == 1)
+                {
+                    user = userData.GetUserByEmail(user.Email);
+                    Session["Email"] = user.Email;
+                    Session["Id"] = user.UserId;
+                    return RedirectToAction("Index", "Admin");
+                }
+                else
+                {
+                    ViewBag.Message = "The user does not exist!";
+                    return View();
+                }
             }
             else {
                 return View();
             }
+         
+           
         }
 
         [HttpGet]
@@ -73,26 +82,45 @@ namespace BookReadingEvents.Controllers
                 Password = viewModel.Password
             };
 
-            int canUserBeAdded = userData.SignUpVerifications(user);
-            
-            if (canUserBeAdded == -1)
+            if (ModelState.IsValid)
+            {
+                int canUserBeAdded = userData.SignUpVerifications(user);
+
+                if (canUserBeAdded == -1)
+                {
+                    ViewBag.Message = "Error!! A user with same email already exists!";
+                    //same email
+                    return View();
+                }
+                else if (canUserBeAdded == 0)
+                {
+                 
+                        userData.AddUser(user);
+                        user = userData.GetUserByEmail(user.Email);
+                        Session["Email"] = user.Email;
+                        Session["Id"] = user.UserId;
+                        return RedirectToAction("Index", "Events");
+                   
+
+
+                }
+                else
+                {
+                        userData.AddUser(user);
+                        user = userData.GetUserByEmail(user.Email);
+                        Session["Email"] = user.Email;
+                        Session["Id"] = user.UserId;
+                        return RedirectToAction("Index", "Admin");
+                   
+                }
+            }
+            else
             {
                 return View();
             }
-            else if (canUserBeAdded == 0)
-            {
-                user = userData.GetUserByEmail(user.Email);
-                Session["Email"] = user.Email;
-                Session["Id"] = user.UserId;
-                return RedirectToAction("Index" , "Events");
+          
             }
-            else{
-                user = userData.GetUserByEmail(user.Email);
-                Session["Email"] = user.Email;
-                Session["Id"] = user.UserId;
-                return RedirectToAction("Index", "Admin");
-            }
-        }
+        
 
         [HttpGet]
         public ActionResult AllEventsBeforeLoginSignup()

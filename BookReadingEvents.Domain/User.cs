@@ -10,10 +10,10 @@ namespace BookReadingEvents.Domain
         [System.ComponentModel.DataAnnotations.Schema.DatabaseGenerated(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.Identity)]
         public Guid UserId { get; set; }
 
-        [Required]
+        [Required(ErrorMessage ="Email is Required!")]
         public string Email { get; set; }
 
-        [Required, MinLength(8)]
+        [Required, MinLength(8 , ErrorMessage ="The minimum length of your password must be 8!")]
         public string Password { get; set; }
 
         [Required]

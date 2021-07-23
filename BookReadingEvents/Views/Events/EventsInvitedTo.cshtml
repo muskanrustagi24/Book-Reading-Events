@@ -14,34 +14,37 @@
 
 @if (Model != null)
 {
-    <table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Title)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Description)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Date)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Location)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Duration)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.OtherDetails)
-            </th>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Location)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Duration)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OtherDetails)
+        </th>
 
-            <th></th>
-        </tr>
+        <th></th>
+    </tr>
 
-        @foreach (var item in Model)
+    @foreach (var item in Model)
+    {
+        if(item != null)
         {
+
             <tr>
-                <td>
+                <td>    
                     @Html.DisplayFor(modelItem => item.Title)
                 </td>
                 <td>
@@ -59,20 +62,17 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.OtherDetails)
                 </td>
-
-               
                 <td>
-                    @if (item != null)
-                    { 
-                    <div>@Html.ActionLink("Details", "Detail", "TableData", new { eventId = item.EventId }, null)</div>
-                    }
+                    @Html.ActionLink("Details", "Detail", "TableData", new { eventId = item.EventId }, null)
                 </td>
-                 
-                
             </tr>
+
+
         }
 
-    </table>
+    }
+
+</table>
 
 
 }
