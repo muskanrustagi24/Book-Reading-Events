@@ -11,11 +11,11 @@ namespace BookReadingEvents.BusinessLogic
    public class InvitessBusinessLogic
     {
       
-        private readonly IInviteeData sqlInvitee;
+        private readonly IInviteeDataAccess sqlInvitee;
 
         public InvitessBusinessLogic() {
            
-            sqlInvitee = new SqlInviteeData();
+            sqlInvitee = new InviteeDataAccess();
         }
 
         public void SaveInvitees(string invitees , Guid eventId ){

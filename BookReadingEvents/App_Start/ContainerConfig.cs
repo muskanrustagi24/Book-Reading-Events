@@ -14,8 +14,8 @@ namespace BookReadingEvents
 
             builder.RegisterControllers(typeof(MvcApplication).Assembly);
             
-            builder.RegisterType<SqlUserData>().As<IUserData>().InstancePerRequest();
-            builder.RegisterType<SqlEventData>().As<IEventData>().InstancePerRequest();
+            builder.RegisterType<UserDataAccess>().As<IUserDataAccess>().InstancePerRequest();
+            builder.RegisterType<EventDataAccess>().As<IEventDataAccess>().InstancePerRequest();
             //builder.RegisterType<BookReadingEventsDbContext>().InstancePerRequest();
 
             var container = builder.Build();

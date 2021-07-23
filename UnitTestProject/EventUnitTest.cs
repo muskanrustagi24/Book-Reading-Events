@@ -13,7 +13,7 @@ namespace UnitTestProject
     {
         [Theory]
         [InlineData]
-        public void TestMethod1(Mock<IEventData> eventData, EventBusinessLogic sut)
+        public void TestMethod1(Mock<IEventDataAccess> eventData, EventBusinessLogic sut)
         {
             //Arrange
             Event expectedEvent = new Event {

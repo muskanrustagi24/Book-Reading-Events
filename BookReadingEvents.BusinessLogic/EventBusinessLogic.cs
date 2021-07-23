@@ -7,11 +7,11 @@ namespace BookReadingEvents.BusinessLogic
 {
     public class EventBusinessLogic
     {
-        private readonly IEventData eventData;
+        private readonly IEventDataAccess eventData;
 
         public EventBusinessLogic()
         {
-            eventData = new SqlEventData();
+            eventData = new EventDataAccess();
         }
 
         public IEnumerable<Event> GetAllPublicEvents() {

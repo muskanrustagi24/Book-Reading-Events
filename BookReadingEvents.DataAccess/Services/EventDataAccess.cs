@@ -7,11 +7,11 @@ using System.Linq;
 
 namespace BookReadingEvents.DataAccess.Services
 {
-    public class SqlEventData : IEventData
+    public class EventDataAccess : IEventDataAccess
     {
         private readonly BookReadingEventsDbContext eventData;
 
-        public SqlEventData()
+        public EventDataAccess()
         {
             this.eventData = new BookReadingEventsDbContext();
         }

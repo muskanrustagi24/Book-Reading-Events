@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace BookReadingEvents.DataAccess.Services
 {
-    public class DummyEventData : IEventData
+    public class DummyEventData : IEventDataAccess
     {
         readonly IEnumerable<Event> events;
 

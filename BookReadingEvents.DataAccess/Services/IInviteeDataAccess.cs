@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace BookReadingEvents.DataAccess.Services
 {
-    public interface IInviteeData
+    public interface IInviteeDataAccess
     {
         void SaveInvitees(string[] invitees, Guid eventId);
 
