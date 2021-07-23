@@ -13,7 +13,7 @@ namespace UnitTestProject
 
         [Theory]
         [InlineData]
-        public void TestMethod1(Mock<IUserData> userData, EventBusinessLogic sut)
+        public void TestMethod1(Mock<IUserDataAccess> userData, EventBusinessLogic sut)
         {
             //Arrange
             User expectedUser = new User
@@ -38,7 +38,7 @@ namespace UnitTestProject
 
         [Theory]
         [InlineData]
-        public void TestMethod2(Mock<IUserData> userData, EventBusinessLogic sut)
+        public void TestMethod2(Mock<IUserDataAccess> userData, EventBusinessLogic sut)
         {
             //Arrange
             bool expectedResult = true;

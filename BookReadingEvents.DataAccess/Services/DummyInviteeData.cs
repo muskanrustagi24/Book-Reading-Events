@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace BookReadingEvents.DataAccess.Services
 {
-   public class DummyInviteeData : IInviteeData
+   public class DummyInviteeData : IInviteeDataAccess
     {
         private readonly IEnumerable<Invitee> inviteeList;
         public DummyInviteeData() {

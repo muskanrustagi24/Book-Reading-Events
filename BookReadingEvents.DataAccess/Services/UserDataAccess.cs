@@ -6,11 +6,11 @@ using System.Linq;
 
 namespace BookReadingEvents.DataAccess.Services
 {
-    public class SqlUserData : IUserData
+    public class UserDataAccess : IUserDataAccess
     {
         private readonly BookReadingEventsDbContext userData;
 
-        public SqlUserData()
+        public UserDataAccess()
         {
             this.userData = new BookReadingEventsDbContext();
         }

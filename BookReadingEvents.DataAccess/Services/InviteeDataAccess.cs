@@ -5,11 +5,11 @@ using System.Linq;
 
 namespace BookReadingEvents.DataAccess.Services
 {
-    public class SqlInviteeData : IInviteeData
+    public class InviteeDataAccess : IInviteeDataAccess
     {
         private readonly BookReadingEventsDbContext inviteeData;
 
-        public SqlInviteeData()
+        public InviteeDataAccess()
         {
             inviteeData = new BookReadingEventsDbContext();
         }

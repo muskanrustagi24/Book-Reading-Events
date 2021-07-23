@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace BookReadingEvents.DataAccess.Services
 {
-    public interface IUserData
+    public interface IUserDataAccess
     {
         IEnumerable<User> GetAll();
 

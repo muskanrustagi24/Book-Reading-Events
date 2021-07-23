@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace BookReadingEvents.DataAccess.Services
 {
-    public class DummyUserData : IUserData
+    public class DummyUserData : IUserDataAccess
     {
         IEnumerable<User> users;
 

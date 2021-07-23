@@ -56,12 +56,12 @@
     <Compile Include="Services\DummyEventData.cs" />
     <Compile Include="Services\DummyInviteeData.cs" />
     <Compile Include="Services\DummyUserData.cs" />
-    <Compile Include="Services\IEventData.cs" />
-    <Compile Include="Services\IInviteeData.cs" />
-    <Compile Include="Services\IUserData.cs" />
-    <Compile Include="Services\SqlEventData.cs" />
-    <Compile Include="Services\SqlInviteeData.cs" />
-    <Compile Include="Services\SqlUserData.cs" />
+    <Compile Include="Services\IEventDataAccess.cs" />
+    <Compile Include="Services\IInviteeDataAccess.cs" />
+    <Compile Include="Services\IUserDataAccess.cs" />
+    <Compile Include="Services\EventDataAccess.cs" />
+    <Compile Include="Services\InviteeDataAccess.cs" />
+    <Compile Include="Services\UserDataAccess.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BookReadingEvents.Domain\BookReadingEvents.Domain.csproj">
