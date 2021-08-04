@@ -48,19 +48,21 @@ namespace BookReadingEvents.Controllers
         [HttpPost]
         public ActionResult Create(CreateEventViewModel viewModel)
         {
-            Event myEvent = new Event
-            {
-                Title = viewModel.Event.Title,
-                Description = viewModel.Event.Description,
-                Duration = viewModel.Event.Duration,
-                Date = DateTime.Parse(viewModel.Date),
-                Location = viewModel.Event.Location,
-                OtherDetails = viewModel.Event.OtherDetails,
-                TypeOfEvent = viewModel.Event.TypeOfEvent,
-                UserId = Guid.Parse(Session["Id"].ToString()),
-            };
 
-             if (ModelState.IsValid) {
+            if (ModelState.IsValid) {
+
+                Event myEvent = new Event
+                {
+                    Title = viewModel.Event.Title,
+                    Description = viewModel.Event.Description,
+                    Duration = viewModel.Event.Duration,
+                    Date = DateTime.Parse(viewModel.Date),
+                    Location = viewModel.Event.Location,
+                    OtherDetails = viewModel.Event.OtherDetails,
+                    TypeOfEvent = viewModel.Event.TypeOfEvent,
+                    UserId = Guid.Parse(Session["Id"].ToString()),
+                };
+
                 eventData.AddEvent(myEvent);
                 inviteeData.SaveInvitees(viewModel.Invitees , myEvent.EventId);
                 return RedirectToAction("MyEvents");
