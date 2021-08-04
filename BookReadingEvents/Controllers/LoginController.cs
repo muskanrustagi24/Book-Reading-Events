@@ -130,12 +130,12 @@ namespace BookReadingEvents.Controllers
         }
 
         public ActionResult RenderEventsPartialView() {
-            return PartialView("_EventsPartialView");
+            return PartialView("_EventsBeforeLoginSignupPartialView");
         }
         
         [HttpGet]
-        public ActionResult Details(Guid id) {
-            Event myEvent = eventData.GetEventByEventId(id);
+        public ActionResult Details(Guid eventId) {
+            Event myEvent = eventData.GetEventByEventId(eventId);
             return View(myEvent);
         }
     
